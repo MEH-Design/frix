@@ -2,5 +2,9 @@
   "/index": {
     "template": "index.html",
     "content": "index.json"
+  },
+  "/home": {
+    "template": "index.html",
+    "content": "home.json"
   }
 }

@@ -3,9 +3,13 @@
 var fs = require('fs');
 var express = require('express');
 var Mark = require('markup-js');
-var templates = [];
+var templates = {};
 var app = express();
 
+app.use(function(req, res, next) {
+  console.log(req.url);
+  res.end();
+});
 
 fs.readFile(__dirname + '/key.json', 'utf8', function(err, file) {
   if(err) throw err;
@@ -13,10 +17,7 @@ fs.readFile(__dirname + '/key.json', 'utf8', function(err, file) {
   var data = JSON.parse(file);
   for(var key in data) {
     renderFile(data[key].template, data[key].content, function(data) {
-      templates.push({
-        url: key,
-        html: data
-      });
+      templates[key] = { html: data };
     });
   }
 });
@@ -40,8 +41,6 @@ function renderFile(filename, keyname, callback) {
         };
       });
 
-      console.log(organisms);
-
       var i = 0;
       organisms.forEach(function(o) {
         markupOrganism(o, function(data) {
@@ -64,7 +63,7 @@ function renderFile(filename, keyname, callback) {
         });
       }
 
-      function markupTemplate(template, organisms) {
+      function markupTemplate(template, organisms, cb) {
         var markupped = template;
         organisms.forEach(function(o) {
           markupped = markupped.replace(new RegExp(o.full), o.markupped);

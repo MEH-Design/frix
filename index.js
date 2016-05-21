@@ -45,7 +45,6 @@ function renderFile(filename, keyname, callback) {
       organisms.forEach(function(o) {
         markupOrganism(o, function(data) {
           o.markupped = data;
-          console.log(o.markupped);
           i++;
           if(i === organisms.length) {
             markupTemplate(template, organisms, function(data) {

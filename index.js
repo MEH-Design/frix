@@ -3,10 +3,25 @@
 var fs = require('fs');
 var express = require('express');
 var Mark = require('markup-js');
-
+var templates = [];
 var app = express();
 
-app.get('/', function(req, res) {
+
+fs.readFile(__dirname + '/key.json', 'utf8', function(err, file) {
+  if(err) throw err;
+
+  var data = JSON.parse(file);
+  for(var key in data) {
+    renderFile(data[key].template, data[key].content, function(data) {
+      templates.push({
+        url: key,
+        html: data
+      });
+    });
+  }
+});
+
+function renderFile(filename, keyname, callback) {
   fs.readFile(__dirname + '/templates/index.html', 'utf8', function(err, file) {
     if(err) throw err;
 
@@ -34,7 +49,9 @@ app.get('/', function(req, res) {
           console.log(o.markupped);
           i++;
           if(i === organisms.length) {
-            markupTemplate(template, organisms);
+            markupTemplate(template, organisms, function(data) {
+              callback(data);
+            });
           }
         });
       });
@@ -52,11 +69,11 @@ app.get('/', function(req, res) {
         organisms.forEach(function(o) {
           markupped = markupped.replace(new RegExp(o.full), o.markupped);
         });
-        res.send(markupped);
+        cb(markupped);
       }
     });
   })
-});
+}
 
 app.listen('8080');
 console.log('Started..');

@@ -7,8 +7,12 @@ var templates = {};
 var app = express();
 
 app.use(function(req, res, next) {
-  console.log(req.url);
-  res.end();
+  var targetTemplate = templates[req.url];
+  if(targetTemplate) {
+    res.send(targetTemplate.html);
+  } else {
+    next();
+  }
 });
 
 fs.readFile(__dirname + '/key.json', 'utf8', function(err, file) {

@@ -1,0 +1,6 @@
+{
+  '/index': {
+    template: 'index.html',
+    content: 'index.json'
+  }
+}

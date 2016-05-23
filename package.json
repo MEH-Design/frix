@@ -1,31 +1,31 @@
 {
   "name": "atomicms",
-  "version": "0.1.1",
-  "description": "A CMS using atomic design.",
+  "version": "0.1.0",
+  "description": "A CMS based on atomic design principles.",
   "main": "index.js",
-  "dependencies": {
-    "app-root-path": "^1.0.0",
-    "markup-js": "^1.5.21",
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bminixhofer/cms.git"
+    "url": "git+https://github.com/bminixhofer/atomicms.git"
   },
   "keywords": [
-    "cms", "atomic"
+    "atomic",
+    "design",
+    "cms"
   ],
-  "author": "bminixhofer",
-  "contributors": [{
-    "name": "Benjamin Minixhofer",
-    "email": "bj.minixhofer@gmail.com"
+  "author": "Christoph Minixhofer <christoph.minixhofer@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bminixhofer/atomicms/issues"
   },
-  {
-    "name": "Christoph Minixhofer",
-    "email": "christoph.minixhofer@gmail.com"
-  }],
-  "license": "MIT"
+  "homepage": "https://github.com/bminixhofer/atomicms#readme",
+  "dependencies": {
+    "app-root-path": "^1.0.0",
+    "fs": "0.0.2",
+    "markup-js": "^1.5.21",
+    "path": "^0.12.7",
+    "use-strict": "^1.0.1"
+  }
 }

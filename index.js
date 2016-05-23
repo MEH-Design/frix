@@ -1,9 +1,8 @@
 'use strict';
-require('use-strict');
 
 const fs = require('fs');
-const root = require('app-root-path');
 const sep = require('path').sep;
+const root = require('app-root-path').path + sep;
 const mark = require('markup-js');
 const og = require('og');
 
@@ -14,18 +13,14 @@ const defaultOpt = {
   organism: 'organisms'
 }
 
-module.exports = class {
+class atomicms {
   constructor(opt = defaultOpt) {
     this.opt = opt;
-    this.templates = createTemplates();
+    this.templates = this.createTemplates();
   }
 
   get requestHandler() {
     return requestHandler;
-  }
-
-  get templates() {
-    return templates;
   }
 
   requestHandler(req, res, next) {
@@ -38,22 +33,22 @@ module.exports = class {
   }
 
   createTemplates() {
-    let keyPath = '${root}${sep}${opt.key}';
+    let keyPath = `${root}${this.opt.key}`;
     let keyJson = JSON.parse(fs.readFileSync(keyPath, 'utf8'));
     let templates = {};
     for(let [key, value] of og(keyJson)) {
-      templates[key] = renderFile(value.template, value.content);
+      templates[key] = this.renderFile(value.template, value.content);
     }
     return templates;
   }
 
   renderFile(templatePath, contentPath) {
-    let templatePath = '${root}${sep}${opt.template}${sep}${templatePath}';
-    let contentPath = '${root}${sep}${opt.content}${sep}${contentPath}';
+    templatePath = `${root}${this.opt.template}${sep}${templatePath}`;
+    contentPath = `${root}${this.opt.content}${sep}${contentPath}`;
     let template = fs.readFileSync(templatePath, 'utf8');
-    let content = fs.readFileSync(contentPath, 'utf8');
-    let organisms = template.match(/{{.+}}/g).map(mapOrganism);
-    return markup(template, content, organisms);
+    let content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
+    let organisms = template.match(/{{.+}}/g).map(this.mapOrganism);
+    return this.markup(template, content, organisms);
   }
 
   mapOrganism(o) {
@@ -61,22 +56,22 @@ module.exports = class {
     let organism = {
       full: matches[0],
       type: matches[1],
-      variable: matches[2]      
+      variable: matches[2]
     };
-    if(organsim.type.indexOf(',')) {
+    if(organism.type.indexOf(',')) {
       organism.type = organism.type.split(/,\s*/);
     }
     //escape characters to prevent misinterpretation by RegExp
-    organsim.full = organsim.full.split('').map(c => {
+    organism.full = organism.full.split('').map(c => {
       return (/[\[\]]/.test(c) ? '\\' : '') + c;
     });
     return organism;
   }
 
   markup(template, content, organisms) {
-    let r = template;
+    let result = template;
     organisms.forEach(o => {
-      let oMarkup = markupOrganism(o, content[o.variable]);
+      let oMarkup = this.markupOrganism(o, content[o.variable]);
       result = result.replace(new RegExp(o.full, 'g'), oMarkup);
     });
     return result;
@@ -84,13 +79,15 @@ module.exports = class {
 
   markupOrganism(o, content) {
     let oPath;
-    if(typeof o.organism === 'object') {
-      oPath = content.organism || o.organism[0];   
+    if(typeof o.type === 'object') {
+      oPath = content.organism || o.type[0];
     } else {
-      oPath = o.organism;
+      oPath = o.type;
     }
-    oPath = '${root}${sep}${opt.organism}${sep}${oPath}.html';
+    oPath = `${root}${this.opt.organism}${sep}${oPath}.html`;
     let file = fs.readFileSync(oPath, 'utf-8');
     return mark.up(file, content);
   }
 }
+
+module.exports = atomicms;

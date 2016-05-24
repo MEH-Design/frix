@@ -27,6 +27,7 @@ Atomicms takes an `opts` object specifing the paths of `key.json`, templates, or
 
 ### key.json
 `key.json` is where it comes all together. One `template` and `content` are assigned to one url respectively.
+
 **Example:**
 ````
 {
@@ -39,7 +40,9 @@ Atomicms takes an `opts` object specifing the paths of `key.json`, templates, or
 
 ### Organisms
 Organisms can reside in templates and are referenced using ``markup-js`` syntax.
+
 **Example:**
+
 *template [index.html]*
 ``
 <body>

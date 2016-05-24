@@ -15,6 +15,7 @@ app.get('/', cms.requestHandler);
 
 ## API
 Atomicms takes an `opts` object specifing the paths of `key.json`, templates, organisms and content.
+
 **Default `opts` object:**
 ````
 {
@@ -44,11 +45,11 @@ Organisms can reside in templates and are referenced using ``markup-js`` syntax.
 **Example:**
 
 *template [index.html]*
-``
+````
 <body>
     {{oHeader as header}}
 </body>
-``
+````
 
 *organism [oHeader.html]*
 ````
@@ -65,6 +66,7 @@ Organisms can reside in templates and are referenced using ``markup-js`` syntax.
     'img': ...,
     'content': ...
   }
+}
 ````
 
 ## Installation

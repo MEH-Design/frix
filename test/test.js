@@ -151,9 +151,9 @@ describe('atomicms', function() {
     describe('organism without content', function() {
       let origIndex = fs.readFileSync('test/templates/index.html', 'utf-8');
       let origBody = fs.readFileSync('test/organisms/oBody.html', 'utf-8');
+      let oTest = '<!-- this is an organism for testing -->';
 
       before(function() {
-        let oTest = '<!-- this is an organism for testing -->';
         fs.writeFileSync('test/templates/index.html', '{{oBody}}');
         fs.writeFileSync('test/organisms/oBody.html', oTest);
         a = new atomicms();

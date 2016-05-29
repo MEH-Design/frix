@@ -111,12 +111,11 @@ describe('atomicms', function() {
   });
 
   describe('#requestHandler', function() {
-    let app, a;
 
     before(function() {
       const express = require('express');
-      app = express();
-      a = new atomicms();
+      let app = express();
+      let a = new atomicms();
       app.get('*', a.requestHandler());
       app.listen('8080');
     });
@@ -126,6 +125,15 @@ describe('atomicms', function() {
         .get('/index')
         .end(function(err, res) {
           expect(res.status).to.not.equal(404);
+          done();
+        });
+    });
+
+    it('should return 404 on wrong request', function(done) {
+      chai.request('http://localhost:8080')
+        .get('/nothing')
+        .end(function(err, res) {
+          expect(res.status).to.equal(404);
           done();
         });
     });

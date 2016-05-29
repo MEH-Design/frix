@@ -31,7 +31,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-http": "^2.0.1",
     "coveralls": "^2.11.9",
+    "express": "^4.13.4",
     "istanbul": "^0.4.3",
     "lorem-ipsum": "^1.0.3",
     "mocha": "^2.5.1",

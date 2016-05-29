@@ -1,6 +1,6 @@
 {
   "name": "atomicms",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A CMS based on atomic design principles.",
   "main": "index.js",
   "scripts": {

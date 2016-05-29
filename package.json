@@ -4,11 +4,12 @@
   "description": "A CMS based on atomic design principles.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
+    "cover": "node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec test/*"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bminixhofer/atomicms.git"
+    "url": "git+https://github.com/MEH-Design/atomicms.git"
   },
   "keywords": [
     "atomic",
@@ -18,9 +19,9 @@
   "author": "Christoph Minixhofer <christoph.minixhofer@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bminixhofer/atomicms/issues"
+    "url": "https://github.com/MEH-Design/atomicms/issues"
   },
-  "homepage": "https://github.com/bminixhofer/atomicms#readme",
+  "homepage": "https://github.com/MEH-Design/atomicms#readme",
   "dependencies": {
     "app-root-path": "^1.0.0",
     "fs": "0.0.2",
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3",
     "lorem-ipsum": "^1.0.3",
     "mocha": "^2.5.1",
     "mock-fs": "^3.9.0",

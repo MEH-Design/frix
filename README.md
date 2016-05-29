@@ -1,7 +1,8 @@
 # atomicms
 [![Build Status](https://travis-ci.org/MEH-Design/atomicms.svg?branch=master)](https://travis-ci.org/MEH-Design/atomicms)
 [![Coverage Status](https://coveralls.io/repos/github/MEH-Design/atomicms/badge.svg?branch=master)](https://coveralls.io/github/MEH-Design/atomicms?branch=master)
-CMS module inspired by [atomic design](http://bradfrost.com/blog/post/atomic-web-design).
+
+CMS module inspired by [atomic design](http://bradfrost.com/blog/post/atomic-web-design)
 
 ## Example
 ````

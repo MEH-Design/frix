@@ -83,6 +83,10 @@ describe('atomicms', function() {
     }
   });
 
+  after(function() {
+    mock.restore();
+  });
+
   describe('#opts', function() {
     let a = new atomicms();
     it('should have default key', function() {

@@ -27,7 +27,6 @@
     "fs": "0.0.2",
     "keva": "^1.0.0",
     "markup-js": "^1.5.21",
-    "og": "file:lib/og.js",
     "path": "^0.12.7"
   },
   "devDependencies": {

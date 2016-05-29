@@ -8,7 +8,7 @@ const proxyquire = require('proxyquire');
 const atomicms = proxyquire('../lib/atomicms', { 'app-root-path': { path: 'test' } });;
 const loremIpsum = require('lorem-ipsum');
 const fs = require('fs');
-const og = require('og');
+const keva = require('keva');
 const express = require('express');
 
 let keyJson = {
@@ -143,7 +143,7 @@ describe('atomicms', function() {
     let a = new atomicms();
 
     it('should create templates with keys from key.json', function() {
-      for(let [key,] of og(keyJson)) {
+      for(let [key,] of keva(keyJson)) {
         expect(a.templates).to.have.property(key);
       }
     });

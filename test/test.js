@@ -43,7 +43,7 @@ let oBody = '<p>{{paragraph}}</p>';
 let oHeader = `
 <h1>{{title}}</h1>
 <img src={{img}}>
-<p><strong>{{content}}</strong></p>
+<article>{{content}}</article>
 `;
 
 let indexJson = {
@@ -150,7 +150,7 @@ describe('atomicms', function() {
 
     describe('organism without content', function() {
       let origIndex = fs.readFileSync('test/templates/index.html', 'utf-8');
-      let origTest = fs.readFileSync('test/organisms/oBody.html', 'utf-8');
+      let origBody = fs.readFileSync('test/organisms/oBody.html', 'utf-8');
 
       before(function() {
         let oTest = '<!-- this is an organism for testing -->';
@@ -161,11 +161,42 @@ describe('atomicms', function() {
 
       after(function() {
         fs.writeFileSync('test/templates/index.html', origIndex);
-        fs.writeFileSync('test/organisms/oBody.html', origTest);
+        fs.writeFileSync('test/organisms/oBody.html', origBody);
       });
 
       it('should be included into html', function() {
         expect(a.templates['/index']).to.contain(oTest);
+      });
+    });
+
+    describe('multiple organisms', function() {
+      let origIndex = fs.readFileSync('test/templates/index.html', 'utf-8');
+      let origContentIndex = fs.readFileSync('test/content/index.json', 'utf-8');
+      let origContentHome = fs.readFileSync('test/content/home.json', 'utf-8');
+
+      before(function() {
+        let contentIndex = { test: JSON.parse(origContentIndex).header };
+        let contentHome = { test: JSON.parse(origContentHome).body };
+        contentIndex.test.type = 'oHeader';
+        contentHome.test.type = 'oBody';
+        fs.writeFileSync('test/templates/index.html', '{{[oBody, oHeader] as test}}');
+        fs.writeFileSync('test/content/index.json', JSON.stringify(contentIndex))
+        fs.writeFileSync('test/content/home.json', JSON.stringify(contentHome));
+        a = new atomicms();
+      });
+
+      after(function() {
+        fs.writeFileSync('test/templates/index.html', origIndex);
+        fs.writeFileSync('test/content/index.json', origContentIndex);
+        fs.writeFileSync('test/content/home.json', origContentHome);
+      });
+
+      it('should work with header type', function() {
+        expect(a.templates['/index']).to.contain('<h1>index</h1>');
+      });
+
+      it('should work with body type', function() {
+        expect(a.templates['/home']).to.contain('<p>');
       });
     });
   });

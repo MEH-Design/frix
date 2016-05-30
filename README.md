@@ -16,7 +16,7 @@ let app = express();
 const atomicms = require('atomicms');
 let cms = new atomicms();
 
-app.get('/', cms.requestHandler);
+app.get('*', cms.requestHandler());
 ````
 
 ## API

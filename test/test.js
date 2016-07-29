@@ -13,12 +13,12 @@ const express = require('express');
 
 let keyJson = {
   '/index': {
-    'template': 'index.html',
-    'content': 'index.json'
+    template: 'index.html',
+    content: 'index.json'
   },
   '/home': {
-    'template': 'index.html',
-    'content': 'home.json'
+    template: 'index.html',
+    content: 'home.json'
   }
 };
 

@@ -97,6 +97,7 @@ HTML tags in components can contain attributes with a certain prefix (`cms` per 
 ##### content/page1.json
 ````
 {
+  "title" : "atomic",
   "article" : {
     "text": "An atom is the basic unit that makes up all matter.",
     "header": {

@@ -27,8 +27,8 @@ Atomicms takes an `opts` object specifing the paths of `key.json`, templates, or
   key: 'key.json',
   folders: {
     'organism': 'templates/organisms',
-	  'molecule': 'templates/molecules',
-	  'atom': 'templates/atoms'
+    'molecule': 'templates/molecules',
+    'atom': 'templates/atoms'
   },
   content: 'content',
   pages: 'templates/pages',

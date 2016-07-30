@@ -28,6 +28,7 @@
     "keva": "^1.0.0",
     "merge": "^1.2.0",
     "path": "^0.12.7",
+    "proxyquire": "^1.7.10",
     "then-fs": "^2.0.0"
   },
   "devDependencies": {

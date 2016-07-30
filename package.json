@@ -24,8 +24,8 @@
   "homepage": "https://github.com/MEH-Design/atomicms#readme",
   "dependencies": {
     "app-root-path": "^1.0.0",
-    "fs": "0.0.2",
-    "jsdom": "^9.4.1",
+    "cheerio": "^0.20.0",
+    "fs-es6-promise": "^0.0.1",
     "keva": "^1.0.0",
     "path": "^0.12.7"
   },

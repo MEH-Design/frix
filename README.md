@@ -69,14 +69,6 @@ Organisms, molecules and atoms can be used in templates using "normal" html synt
 ##### templates/molecules/header.html
 ````
 <header>
-  <atom type="heading-en"/>
-  <atom type="heading-de"/>
-  <atom type="author"/>
-</header>
-````
-##### templates/molecules/header.html
-````
-<header>
   <atom name="heading-en" type="heading"/>
   <atom name="heading-de" type="heading"/>
   <atom type="author"/>

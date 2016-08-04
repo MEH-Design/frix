@@ -15,7 +15,7 @@ let app = express();
 
 const atomic = new require('atomicms')();
 
-app.get('*', atomic.requestHandler);
+app.use(atomic.requestHandler);
 ````
 
 ## API

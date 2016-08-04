@@ -15,7 +15,7 @@ let app = express();
 
 const atomic = new require('atomicms')();
 
-app.get('*', atomic.requestHandler);
+app.use(atomic.requestHandler);
 ````
 
 ## API
@@ -38,7 +38,7 @@ Atomicms takes an `opts` object specifing the paths of `key.json`, templates, or
     content: 'content',
     prefix: 'cms'
   }
-};
+}
 ````
 
 ### Components
@@ -61,18 +61,9 @@ Organisms, molecules and atoms can be used in templates using "normal" html synt
 ##### templates/organisms/article.html
 ````
 <article>
-  <molecule name="header-en" type="header"/>
-  <molecule name="header-de" type="header"/>
+  <molecule type="header"/>
   <p cms-content="text"></p>
 </article>
-````
-##### templates/molecules/header.html
-````
-<header>
-  <atom type="heading-en"/>
-  <atom type="heading-de"/>
-  <atom type="author"/>
-</header>
 ````
 ##### templates/molecules/header.html
 ````
@@ -88,7 +79,7 @@ Organisms, molecules and atoms can be used in templates using "normal" html synt
 ````
 ##### templates/atoms/author.html
 ````
-<p\>written by <span cms-content\></p>
+<p>written by <span cms-content/></p>
 ````
 
 ### Content

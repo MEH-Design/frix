@@ -38,7 +38,7 @@ Atomicms takes an `opts` object specifing the paths of `key.json`, templates, or
     content: 'content',
     prefix: 'cms'
   }
-};
+}
 ````
 
 ### Components

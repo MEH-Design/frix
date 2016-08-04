@@ -88,7 +88,7 @@ Organisms, molecules and atoms can be used in templates using "normal" html synt
 ````
 ##### templates/atoms/author.html
 ````
-<p\>written by <span cms-content\></p>
+<p>written by <span cms-content/></p>
 ````
 
 ### Content

@@ -23,7 +23,7 @@ Templates consist of organisms but can, like all components, contain normal HTML
 
 ### Molecules, Atoms, etc.
 
-Every Component in Atomicms can contain component that are one level lower, for Templates, this would be Organisms, for Organsims Molecules and so on. This goes on until the most basic components - in the default case, this is an Atom - which contains only valid HTML.
+Every Component in Atomicms can contain components that are one level lower, for Templates, this would be Organisms, for Organsims Molecules and so on. This goes on until the most basic components - in the default case, this is an Atom - which contains only valid HTML.
 
 ### Pages
 
@@ -70,15 +70,15 @@ Note that the class `Atomicms` takes an optional config as first argument which 
 ## API Reference
 
 #### atomicms.addModule(target, module)
-  - target <String> the target module(see <a name="Modules">Modules</a>)
-  - module <Function> a function to add to the modules Array for the target. The modules array is executed in chronological order.
+  - target `String` the target module(see <a name="Modules">Modules</a>)
+  - module `Function` a function to add to the modules Array for the target. The modules array is executed in chronological order.
 
 #### atomicms.addModule({ target, module })
-  - target <String> the target module(see <a name="Modules">Modules</a>)
-  - module <Function> a function to add to the modules Array for the target. The modules array is executed in chronological order.
+  - target `String` the target module(see <a name="Modules">Modules</a>)
+  - module `Function` a function to add to the modules Array for the target. The modules array is executed in chronological order.
 
 #### atomic.isDone(onLoad)
-  - onLoad <Function> a function to be executed when Atomicms has finished resolving all templates and inserting content.
+  - onLoad `Function` a function to be executed when Atomicms has finished resolving all templates and inserting content.
   
 ## License
 

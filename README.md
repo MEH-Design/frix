@@ -77,7 +77,7 @@ Note that the class `Atomicms` takes an optional config as first argument which 
   - target <String> the target module(see <a name="Modules">Modules</a>)
   - module <Function> a function to add to the modules Array for the target. The modules array is executed in chronological order.
 
-#### isDone(onLoad)
+#### atomic.isDone(onLoad)
   - onLoad <Function> a function to be executed when Atomicms has finished resolving all templates and inserting content.
   
 ## License

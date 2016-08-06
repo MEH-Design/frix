@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/MEH-Design/atomicms/badge.svg?branch=html-syntax)](https://coveralls.io/github/MEH-Design/atomicms?branch=html-syntax)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-<img align="right" height="200" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB2aWV3Qm94PSIwIDAgMTE5LjggNTUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDExOS44IDU1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0ZGRkZGRjtzdHJva2U6Izk2QTM4NTtzdHJva2Utd2lkdGg6NjtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cgkuc3Qxe2ZpbGw6I0Y5RjVCRTtzdHJva2U6Izk2QTM4NTtzdHJva2Utd2lkdGg6NztzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cgkuc3Qye2ZpbGw6I0ZGRkZGRjtzdHJva2U6I0YwNkQ2NTtzdHJva2Utd2lkdGg6NztzdHJva2UtbWl0ZXJsaW1pdDoxMDt9Cjwvc3R5bGU+CjxsaW5lIGlkPSJYTUxJRF82XyIgY2xhc3M9InN0MCIgeDE9IjQ1LjMiIHkxPSI4LjciIHgyPSIyLjciIHkyPSI1MS4zIi8+CjxsaW5lIGlkPSJYTUxJRF84XyIgY2xhc3M9InN0MCIgeDE9IjExNy43IiB5MT0iMy45IiB4Mj0iNzUuOSIgeTI9IjQ1LjciLz4KPGNpcmNsZSBpZD0iWE1MSURfMTBfIiBjbGFzcz0ic3QxIiBjeD0iNjAuMyIgY3k9IjI3LjYiIHI9IjIzLjciLz4KPGNpcmNsZSBpZD0iWE1MSURfN18iIGNsYXNzPSJzdDIiIGN4PSI2MC4zIiBjeT0iMjcuNiIgcj0iMy40Ii8+Cjwvc3ZnPg==">
+<img align="right" height="200" src="http://imgh.us/atomicms.svg">
 
 A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design) for Express and Node.js
 

@@ -6,7 +6,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/MEH-Design/atomicms/badge.svg?branch=html-syntax)](https://coveralls.io/github/MEH-Design/atomicms?branch=html-syntax)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-<img align="right" height="75" src="http://imgh.us/atomicms.svg">
+<img align="right" height="75" style="margin-top: -10" src="http://imgh.us/atomicms.svg">
 
 A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design) for Express and Node.js
 

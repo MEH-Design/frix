@@ -59,8 +59,8 @@ This serves our `index.html` with inserted content and resolved organisms - so, 
   let app = express();
   
   app.use(atomicms.requestHandler);
-  
 ```
+
 Note that the class `Atomicms` takes an optional config as first argument which describes where all dependencies like the `key.json`, templates, content etc. are stored.
 
 ## Installation
@@ -69,6 +69,26 @@ Note that the class `Atomicms` takes an optional config as first argument which 
 
 ## API Reference
 
+#### new Atomicms([opts])
+  - opts `Object` a config to be merged with the default one: 
+    ```js
+    {
+      key: 'key.json',
+      folders: {
+        organism: 'templates/organisms',
+        molecule: 'templates/molecules',
+        atom: 'templates/atoms'
+      },
+      content: 'content',
+      pages: 'templates/pages',
+      attributes: {
+        name: 'name',
+        type: 'type',
+        content: 'content'
+    } 
+    ```
+  Returns a new instance of Atomicms.
+  
 #### atomicms.addModule(target, module)
   - target `String` the target module(see <a name="Modules">Modules</a>)
   - module `Function` a function to add to the modules Array for the target. The modules array is executed in chronological order.
@@ -77,7 +97,7 @@ Note that the class `Atomicms` takes an optional config as first argument which 
   - target `String` the target module(see <a name="Modules">Modules</a>)
   - module `Function` a function to add to the modules Array for the target. The modules array is executed in chronological order.
 
-#### atomic.isDone(onLoad)
+#### atomicms.isDone(onLoad)
   - onLoad `Function` a function to be executed when Atomicms has finished resolving all templates and inserting content.
   
 ## License

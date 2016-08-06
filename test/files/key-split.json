@@ -1,10 +1,10 @@
 {
   "/page1": {
     "template": "page",
-    "content": "page1"
+    "content": "page"
   },
   "/page2": {
     "template": "page",
-    "content": "page2"
+    "content": "page-atom"
   }
 }

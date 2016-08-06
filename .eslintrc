@@ -1,4 +1,1 @@
-{
-    "extends": "google",
-    "installedESLint": true
-};
+extends: google

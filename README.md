@@ -6,117 +6,80 @@
 [![Code Climate](https://codeclimate.com/repos/574aba91f72f49005f005790/badges/268fb0b8734cc5e8c008/gpa.svg)](https://codeclimate.com/repos/574aba91f72f49005f005790)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-CMS module inspired by [atomic design](http://bradfrost.com/blog/post/atomic-web-design)
+A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design) for Express and Node.js
 
-## Example
-````
-const express = require('express');
-let app = express();
+## Basics
 
-const atomic = new require('atomicms')();
+With Atomicms there is a number of default components:
+  - Pages
+  - Templates
+  - Organisms
+  - Molecules
+  - Atoms
 
-app.use(atomic.requestHandler);
-````
+### Templates
 
-## API
-Atomicms takes an `opts` object specifing the paths of `key.json`, templates, organisms and content, as well as identifiers for attributes.
+Templates consist of organisms but can, like all components, contain normal HTML too. An organism should, as described in Brad Frost's article, be a distinct section of the interface. For example an article.
 
-#### Default
-````
+### Molecules, Atoms, etc.
+
+Every Component in Atomicms can contain component that are one level lower, for Templates, this would be Organisms, for Organsims Molecules and so on. This goes on until the most basic components - in the default case, this is an Atom - which contains only valid HTML.
+
+### Pages
+
+Pages are instances of templates using the content from a specified JSON file and resolving all the organisms to valid HTML. This is what the end user sees.
+
+### Modules
+
+Modules are a number of functions to be executed whenever a specific type of content is set. At the moment `html-content` and `json-content` exist. 
+- `html-content` is called everytime the inner HTML of an element is set.
+- `json-content` is called for every entry in all content files.
+
+###So how does it all work out?
+
+There has to be a `key.json` to choose a URL with which a template and JSON file are associated like this:
+
+```js
 {
-  key: 'key.json',
-  folders: {
-    'organism': 'templates/organisms',
-    'molecule': 'templates/molecules',
-    'atom': 'templates/atoms'
-  },
-  content: 'content',
-  pages: 'templates/pages',
-  attributes: {
-    name: 'name',
-    type: 'type',
-    content: 'content',
-    prefix: 'cms'
+  "/index": {
+    "template": "index.html"
+    "content": "main.json"
   }
 }
-````
+```
 
-### Components
-Organisms, molecules and atoms can be used in templates using "normal" html syntax, they are located in the folders specified in the `opts` object.
+This serves our `index.html` with inserted content and resolved organisms - so, valid HTML. The templates get resolved when the Node.js server starts, so theres practically no overhead when serving files during runtime.
 
-#### Example
-##### templates/pages/page.html
-````
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title cms-content="title"></title>
-  </head>
-  <body>
-    <organism type="article"/>
-  </body>
-</html>
-````
-##### templates/organisms/article.html
-````
-<article>
-  <molecule type="header"/>
-  <p cms-content="text"></p>
-</article>
-````
-##### templates/molecules/header.html
-````
-<header>
-  <atom name="heading-en" type="heading"/>
-  <atom name="heading-de" type="heading"/>
-  <atom type="author"/>
-</header>
-````
-##### templates/atoms/heading.html
-````
-<h1 cms-content/>
-````
-##### templates/atoms/author.html
-````
-<p>written by <span cms-content/></p>
-````
+## Example Usage
 
-### Content
-HTML tags in components can contain attributes with a certain prefix (`cms` per default). These attributes can be set in a **content JSON**. Per default `cms-content` refers to the text within the html tag.
-#### Example
-##### content/page1.json
-````
-{
-  "title" : "atomic",
-  "article" : {
-    "text": "An atom is the basic unit that makes up all matter.",
-    "header": {
-      "heading-en": "Atom",
-      "author": "https://simple.wikipedia.org/wiki/Atom"
-    }
-  }
-}
-````
-
-### Key
-`key.json` is where it comes all together. One `template` and `content` are assigned to one url respectively. Both can be used multiple times.
-#### Example
-##### key.json
-````
-{
-  "/page1": {
-    "template": "page",
-    "content": "page1"
-  },
-  "/page2": {
-    "template": "page",
-    "content": "page2"
-  }
-}
-````
+```js
+  const express = require('express');
+  const Atomicms = require('atomicms');
+  let atomicms = new Atomicms();
+  let app = express();
+  
+  app.use(atomicms.requestHandler);
+  
+```
+Note that the class `Atomicms` takes an optional config as first argument which describes where all dependencies like the `key.json`, templates, content etc. are stored.
 
 ## Installation
-````
-npm install atomicms
-````
+
+`$ npm install atomicms`
+
+## API Reference
+
+#### atomicms.addModule(target, module)
+  - target <String> the target module(see <a name="Modules">Modules</a>)
+  - module <Function> a function to add to the modules Array for the target. The modules array is executed in chronological order.
+
+#### atomicms.addModule({ target, module })
+  - target <String> the target module(see <a name="Modules">Modules</a>)
+  - module <Function> a function to add to the modules Array for the target. The modules array is executed in chronological order.
+
+#### isDone(onLoad)
+  - onLoad <Function> a function to be executed when Atomicms has finished resolving all templates and inserting content.
+  
+## License
+
+MIT

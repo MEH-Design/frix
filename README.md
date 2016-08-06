@@ -1,9 +1,8 @@
 # atomicms
-[![npm version](https://badge.fury.io/js/atomicms.svg)](https://badge.fury.io/js/atomicms)
-[![Build Status](https://travis-ci.org/MEH-Design/atomicms.svg?branch=master)](https://travis-ci.org/MEH-Design/atomicms)
-[![Dependency Status](https://david-dm.org/MEH-Design/atomicms.svg)](https://david-dm.org/MEH-Design/atomicms)
-[![Coverage Status](https://coveralls.io/repos/github/MEH-Design/atomicms/badge.svg?branch=master)](https://coveralls.io/github/MEH-Design/atomicms?branch=master)
-[![Code Climate](https://codeclimate.com/repos/574aba91f72f49005f005790/badges/268fb0b8734cc5e8c008/gpa.svg)](https://codeclimate.com/repos/574aba91f72f49005f005790)
+[![npm version](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)
+[![Build Status](https://travis-ci.org/MEH-Design/atomicms.svg?branch=html-syntax)](https://travis-ci.org/MEH-Design/atomicms)
+[![Dependency Status](https://david-dm.org/MEH-Design/atomicms/html-syntax.svg)](https://david-dm.org/MEH-Design/atomicms/html-syntax)
+[![Coverage Status](https://coveralls.io/repos/github/MEH-Design/atomicms/badge.svg?branch=html-syntax)](https://coveralls.io/github/MEH-Design/atomicms?branch=html-syntax)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design) for Express and Node.js

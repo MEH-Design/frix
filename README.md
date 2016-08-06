@@ -71,22 +71,23 @@ Note that the class `Atomicms` takes an optional config as first argument which 
 
 #### new Atomicms([opts])
   - opts `Object` a config to be merged with the default one: 
-    ```js
-    {
-      key: 'key.json',
-      folders: {
-        organism: 'templates/organisms',
-        molecule: 'templates/molecules',
-        atom: 'templates/atoms'
-      },
-      content: 'content',
-      pages: 'templates/pages',
-      attributes: {
-        name: 'name',
-        type: 'type',
-        content: 'content'
-    } 
-    ```
+  
+```js
+  {
+    key: 'key.json',  
+    folders: {  
+      organism: 'templates/organisms',
+      molecule: 'templates/molecules',
+      atom: 'templates/atoms'
+    },
+    content: 'content',
+    pages: 'templates/pages',
+    attributes: {
+      name: 'name',
+      type: 'type',
+      content: 'content'
+  } 
+  ```
   Returns a new instance of Atomicms.
   
 #### atomicms.addModule(target, module)

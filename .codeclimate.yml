@@ -1,7 +1,8 @@
 engines: 
   eslint:
     enabled: true
-    config: .eslintrc
+    config:
+      config: .eslintrc
     
 ratings:
    paths:

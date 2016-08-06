@@ -1,0 +1,2 @@
+# Comply with eslint google config
+*.js text eol=lf

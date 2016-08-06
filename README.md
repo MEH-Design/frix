@@ -17,25 +17,25 @@ With Atomicms there is a number of default components:
   - Molecules
   - Atoms
 
-### Templates
+#### Templates
 
 Templates consist of organisms but can, like all components, contain normal HTML too. An organism should, as described in Brad Frost's article, be a distinct section of the interface. For example an article.
 
-### Molecules, Atoms, etc.
+#### Molecules, Atoms, etc.
 
 Every Component in Atomicms can contain components that are one level lower, for Templates, this would be Organisms, for Organsims Molecules and so on. This goes on until the most basic components - in the default case, this is an Atom - which contains only valid HTML.
 
-### Pages
+#### Pages
 
 Pages are instances of templates using the content from a specified JSON file and resolving all the organisms to valid HTML. This is what the end user sees.
 
-### Modules
+#### Modules
 
 Modules are a number of functions to be executed whenever a specific type of content is set. At the moment `html-content` and `json-content` exist. 
 - `html-content` is called everytime the inner HTML of an element is set.
 - `json-content` is called for every entry in all content files.
 
-###So how does it all work out?
+#### So how does it all work out?
 
 There has to be a `key.json` to choose a URL with which a template and JSON file are associated like this:
 
@@ -52,6 +52,8 @@ This serves our `index.html` with inserted content and resolved organisms - so, 
 
 ## Example Usage
 
+#### Server Code
+
 ```js
   const express = require('express');
   const Atomicms = require('atomicms');
@@ -62,6 +64,14 @@ This serves our `index.html` with inserted content and resolved organisms - so, 
 ```
 
 Note that the class `Atomicms` takes an optional config as first argument which describes where all dependencies like the `key.json`, templates, content etc. are stored.
+
+#### File System
+
+See the example files at `/test/files`.
+The produced output when getting '/page1' is:
+```html
+  <todo />
+```
 
 ## Installation
 
@@ -87,8 +97,8 @@ Note that the class `Atomicms` takes an optional config as first argument which 
       type: 'type',
       content: 'content'
   } 
-  ```
-  Returns a new instance of Atomicms.
+```
+Returns a new instance of Atomicms.
   
 #### atomicms.addModule(target, module)
   - target `String` the target module(see <a name="Modules">Modules</a>)

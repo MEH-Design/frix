@@ -27,15 +27,18 @@ describe('atomicms', function() {
 
     it('should be added', function() {
       cms.addModule('html-content', someFunction);
-      expect(cms._modules['html-content'].includes(someFunction)).to.be.true;
+      expect(cms._modules['html-content'].includes(someFunction))
+        .to.be.true;
     });
 
     it('should be rejected when not a function', function() {
-      expect(cms.addModule.bind(cms, 'html-content', null)).to.throw('Not a function.');
+      expect(cms.addModule.bind(cms, 'html-content', null))
+        .to.throw('Not a function.');
     });
 
     it('should be rejected when event does not exist', function() {
-      expect(cms.addModule.bind(cms, null, someFunction)).to.throw('Event does not exist.');
+      expect(cms.addModule.bind(cms, 'invalid-string', someFunction))
+        .to.throw('Event does not exist.');
     });
   });
 });

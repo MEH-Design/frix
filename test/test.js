@@ -40,5 +40,19 @@ describe('atomicms', function() {
       expect(cms.addModule.bind(cms, 'invalid-string', someFunction))
         .to.throw('Event does not exist.');
     });
+
+    it('should all be called', function(done) {
+      let promises = [];
+      for (let [key,] of keva(cms._modules)) {
+        promises.push(new Promise(resolve => {
+          cms.addModule(() => {
+            resolve(key);
+          });
+        }));
+      }
+      Promise.all(promises).then(() => {
+        done();
+      });
+    });
   });
 });

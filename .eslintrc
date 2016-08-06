@@ -1,5 +1,5 @@
 {
-  "extends": "google"
+  "extends": "google",
   "eslintConfig": {
         "env": {
             "node": true

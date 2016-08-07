@@ -1,4 +1,4 @@
-# atomicms
+# frix
 [![npm version](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)
 [![Build Status](https://travis-ci.org/MEH-Design/atomicms.svg?branch=html-syntax)](https://travis-ci.org/MEH-Design/atomicms)
 [![Dependency Status](https://david-dm.org/MEH-Design/atomicms/html-syntax.svg)](https://david-dm.org/MEH-Design/atomicms/html-syntax)

@@ -15,14 +15,14 @@ const express = require('express');
 describe('atomicms', function() {
   let cms;
 
-  beforeEach(function() {
+  before(function() {
     cms = new atomicms();
   });
 
   describe('modules', function() {
 
-    let someFunction = function() {
-      return 'someValue';
+    let someFunction = function(html) {
+      return html;
     };
 
     it('should be added', function() {

@@ -1,8 +1,8 @@
 {
-  "extends": "google",
-  "eslintConfig": {
-        "env": {
-            "node": true
+  extends: "google",
+  eslintConfig: {
+        env: {
+            es6: true
         }
     }
 }

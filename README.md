@@ -13,6 +13,7 @@ A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradf
 ## Basics
 
 With Atomicms there is a number of default components:
+  - Templates
   - Pages
   - Organisms
   - Molecules

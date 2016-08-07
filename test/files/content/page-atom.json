@@ -3,8 +3,12 @@
   "article" : {
     "text": "An atom is the basic unit that makes up all matter.",
     "header": {
-      "heading-en": "Atom",
-      "author": "https://simple.wikipedia.org/wiki/Atom"
+      "heading-en": {
+        "heading": "Atom"
+      },
+      "author": {
+        "author": "https://simple.wikipedia.org/wiki/Atom"
+      }
     }
   }
 }

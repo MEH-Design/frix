@@ -45,8 +45,9 @@ describe('atomicms', function() {
       let promises = [];
       for (let [key,] of keva(cms._modules)) {
         promises.push(new Promise(resolve => {
-          cms.addModule(key, () => {
+          cms.addModule(key, html => {
             resolve(key);
+            return html;
           });
         }));
       }

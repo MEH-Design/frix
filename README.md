@@ -1,4 +1,4 @@
-# atomicms
+# frix
 [![npm version](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)
 [![Build Status](https://travis-ci.org/MEH-Design/atomicms.svg?branch=html-syntax)](https://travis-ci.org/MEH-Design/atomicms)
 [![Dependency Status](https://david-dm.org/MEH-Design/atomicms/html-syntax.svg)](https://david-dm.org/MEH-Design/atomicms/html-syntax)
@@ -6,15 +6,15 @@
 [![Coverage Status](https://coveralls.io/repos/github/MEH-Design/atomicms/badge.svg?branch=html-syntax)](https://coveralls.io/github/MEH-Design/atomicms?branch=html-syntax)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-<img align="right" height="75" src="http://imgh.us/atomicms.svg">
+<img align="right" height="85" src="http://imgh.us/frix.svg">
 
 A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design) for Express and Node.js
 
 ## Basics
 
 With Atomicms there is a number of default components:
-  - Pages
   - Templates
+  - Pages
   - Organisms
   - Molecules
   - Atoms

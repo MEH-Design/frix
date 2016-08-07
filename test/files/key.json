@@ -1,0 +1,7 @@
+{
+  "/page1": "page",
+  "/page2": {
+    "template": "page",
+    "content": "page-atom"
+  }
+}

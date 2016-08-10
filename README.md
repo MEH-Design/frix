@@ -8,7 +8,7 @@
 
 <img align="right" height="85" src="http://imgh.us/frix.svg">
 
-A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design) for Express and Node.js
+A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design).
 
 ## Basics
 

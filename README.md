@@ -1,9 +1,9 @@
 # frix
 [![npm version](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)
-[![Build Status](https://travis-ci.org/MEH-Design/atomicms.svg?branch=html-syntax)](https://travis-ci.org/MEH-Design/atomicms)
-[![Dependency Status](https://david-dm.org/MEH-Design/atomicms/html-syntax.svg)](https://david-dm.org/MEH-Design/atomicms/html-syntax)
-[![DevDependency Status](https://david-dm.org/MEH-Design/atomicms/html-syntax/dev-status.svg)](https://david-dm.org/MEH-Design/atomicms/html-syntax?type=dev)
-[![Coverage Status](https://coveralls.io/repos/github/MEH-Design/atomicms/badge.svg?branch=html-syntax)](https://coveralls.io/github/MEH-Design/atomicms?branch=html-syntax)
+[![Build Status](https://travis-ci.org/MEH-Design/frix.svg?branch=html-syntax)](https://travis-ci.org/MEH-Design/frix)
+[![Dependency Status](https://david-dm.org/MEH-Design/frix/html-syntax.svg)](https://david-dm.org/MEH-Design/frix/html-syntax)
+[![DevDependency Status](https://david-dm.org/MEH-Design/frix/html-syntax/dev-status.svg)](https://david-dm.org/MEH-Design/frix/html-syntax?type=dev)
+[![Coverage Status](https://coveralls.io/repos/github/MEH-Design/frix/badge.svg?branch=html-syntax)](https://coveralls.io/github/MEH-Design/frix?branch=html-syntax)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 <img align="right" height="85" src="http://imgh.us/frix.svg">
@@ -12,7 +12,7 @@ A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradf
 
 ## Basics
 
-With Atomicms there is a number of default components:
+With Frix there is a number of default components:
   - Templates
   - Pages
   - Organisms
@@ -25,7 +25,7 @@ Templates consist of organisms but can, like all components, contain normal HTML
 
 #### Molecules, Atoms, etc.
 
-Every Component in Atomicms can contain components that are one level lower, for Templates, this would be Organisms, for Organsims Molecules and so on. This goes on until the most basic components - in the default case, this is an Atom - which contains only valid HTML.
+Every Component in Frix can contain components that are one level lower, for Templates, this would be Organisms, for Organsims Molecules and so on. This goes on until the most basic components - in the default case, this is an Atom - which contains only valid HTML.
 
 #### Pages
 
@@ -58,14 +58,14 @@ This serves our `index.html` with inserted content and resolved organisms - so, 
 
 ```js
   const express = require('express');
-  const Atomicms = require('atomicms');
-  let atomicms = new Atomicms();
+  const Frix = require('frix');
+  let frix = new Frix();
   let app = express();
   
-  app.use(atomicms.requestHandler);
+  app.use(frix.requestHandler);
 ```
 
-Note that the class `Atomicms` takes an optional config as first argument which describes where all dependencies like the `key.json`, templates, content etc. are stored.
+Note that the class `Frix` takes an optional config as first argument which describes where all dependencies like the `key.json`, templates, content etc. are stored.
 
 #### File System
 
@@ -77,11 +77,11 @@ The produced output when getting '/page1' is:
 
 ## Installation
 
-`$ npm install atomicms`
+`$ npm install frix`
 
 ## API Reference
 
-#### new Atomicms([opts])
+#### new Frix([opts])
   - opts `Object` a config to be merged with the default one: 
   
 ```js
@@ -100,18 +100,18 @@ The produced output when getting '/page1' is:
       content: 'content'
   } 
 ```
-Returns a new instance of Atomicms.
+Returns a new instance of Frix.
   
-#### atomicms.addModule(target, module)
+#### frix.addModule(target, module)
   - target `String` the target module(see <a name="Modules">Modules</a>)
   - module `Function` a function to add to the modules Array for the target. The modules array is executed in chronological order.
 
-#### atomicms.addModule({ target, module })
+#### frix.addModule({ target, module })
   - target `String` the target module(see <a name="Modules">Modules</a>)
   - module `Function` a function to add to the modules Array for the target. The modules array is executed in chronological order.
 
-#### atomicms.isDone(onLoad)
-  - onLoad `Function` a function to be executed when Atomicms has finished resolving all templates and inserting content.
+#### frix.isDone(onLoad)
+  - onLoad `Function` a function to be executed when Frix has finished resolving all templates and inserting content.
   
 ## License
 

@@ -3,12 +3,8 @@
   "article" : {
     "text": "A tree is a tall plant with a trunk and branches made of wood.",
     "header": {
-      "heading-en": {
-        "heading": "Tree"
-      },
-      "heading-de": {
-        "heading": "Baum"
-      },
+      "heading-en": "Tree",
+      "heading-de": "Baum",
       "author": {
         "author": "https://simple.wikipedia.org/wiki/Tree"
       }

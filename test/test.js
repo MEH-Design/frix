@@ -13,12 +13,8 @@ const express = require('express');
 
 
 describe('atomicms', function() {
-  let cms;
-
-  before(function() {
-    cms = new atomicms();
-  });
-
+  let cms = atomicms;
+  cms.render();
   describe('modules', function() {
 
     let someFunction = function(html) {
@@ -27,7 +23,7 @@ describe('atomicms', function() {
 
     it('should be added', function() {
       cms.addModule('html-content', someFunction);
-      expect(cms._modules['html-content'].includes(someFunction))
+      expect(cms.modules['html-content'].includes(someFunction))
         .to.be.true;
     });
 
@@ -43,7 +39,7 @@ describe('atomicms', function() {
 
     it('should all be called', function(done) {
       let promises = [];
-      for (let [key,] of keva(cms._modules)) {
+      for (let [key,] of keva(cms.modules)) {
         promises.push(new Promise(resolve => {
           cms.addModule(key, html => {
             resolve(key);

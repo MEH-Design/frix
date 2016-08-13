@@ -13,17 +13,43 @@ const frix = proxyquire('../lib/frix', {
 chai.use(require('chai-http'));
 
 describe('frix', function() {
-  frix.render();
+
+  before(frix.render);
+
+  describe('html', function() {
+
+    it('should be rendered', function() {
+      expect(frix.templates)
+        .to.not.be.null;
+    });
+
+  });
 
   describe('modules', function() {
     let someFunction = function(html) {
       return html;
     };
 
-    it('should be added', function() {
-      frix.addModule('content', someFunction);
-      expect(frix.modules['content'].includes(someFunction))
-        .to.be.true;
+    afterEach(function() {
+      frix.modules['content'] = [];
+    });
+
+    describe('should be added', function() {
+
+      it('using attributes', function() {
+        frix.addModule('content', someFunction);
+        expect(frix.modules['content'].includes(someFunction))
+          .to.be.true;
+      });
+
+      it('using object', function() {
+        frix.addModule({
+          target: 'content',
+          module: someFunction
+        });
+        expect(frix.modules['content'].includes(someFunction))
+          .to.be.true;
+      });
     });
 
     it('should be rejected when not a function', function() {
@@ -49,6 +75,7 @@ describe('frix', function() {
       Promise.all(promises).then(() => {
         done();
       });
+      frix.render();
     });
   });
 });

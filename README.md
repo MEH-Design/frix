@@ -1,9 +1,9 @@
 # frix
-[![npm version](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)](https://img.shields.io/badge/npm%20package-none-lightgrey.svg)
-[![Build Status](https://travis-ci.org/MEH-Design/frix.svg?branch=html-syntax)](https://travis-ci.org/MEH-Design/frix)
-[![Dependency Status](https://david-dm.org/MEH-Design/frix/html-syntax.svg)](https://david-dm.org/MEH-Design/frix/html-syntax)
-[![DevDependency Status](https://david-dm.org/MEH-Design/frix/html-syntax/dev-status.svg)](https://david-dm.org/MEH-Design/frix/html-syntax?type=dev)
-[![Coverage Status](https://coveralls.io/repos/github/MEH-Design/frix/badge.svg?branch=html-syntax)](https://coveralls.io/github/MEH-Design/frix?branch=html-syntax)
+[![npm version](https://badge.fury.io/js/frix.svg)](https://badge.fury.io/js/frix)
+[![Build Status](https://travis-ci.org/MEH-Design/frix.svg?branch=master)](https://travis-ci.org/MEH-Design/frix)
+[![Dependency Status](https://david-dm.org/MEH-Design/frix/master.svg)](https://david-dm.org/MEH-Design/frix/master)
+[![DevDependency Status](https://david-dm.org/MEH-Design/frix/master/dev-status.svg)](https://david-dm.org/MEH-Design/frix/master?type=dev)
+[![Coverage Status](https://coveralls.io/repos/github/MEH-Design/frix/badge.svg?branch=master)](https://coveralls.io/github/MEH-Design/frix?branch=master)
 [![Code Climate](https://codeclimate.com/github/MEH-Design/frix/badges/gpa.svg)](https://codeclimate.com/github/MEH-Design/frix)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 

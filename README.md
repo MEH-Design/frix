@@ -4,6 +4,7 @@
 [![Dependency Status](https://david-dm.org/MEH-Design/frix/html-syntax.svg)](https://david-dm.org/MEH-Design/frix/html-syntax)
 [![DevDependency Status](https://david-dm.org/MEH-Design/frix/html-syntax/dev-status.svg)](https://david-dm.org/MEH-Design/frix/html-syntax?type=dev)
 [![Coverage Status](https://coveralls.io/repos/github/MEH-Design/frix/badge.svg?branch=html-syntax)](https://coveralls.io/github/MEH-Design/frix?branch=html-syntax)
+[![Code Climate](https://codeclimate.com/github/MEH-Design/frix/badges/gpa.svg)](https://codeclimate.com/github/MEH-Design/frix)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 <img align="right" height="85" src="http://imgh.us/frix.svg">

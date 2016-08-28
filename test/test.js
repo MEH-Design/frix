@@ -1,3 +1,4 @@
+/* eslint max-nested-callbacks: 0*/
 'use strict';
 
 const chai = require('chai');
@@ -14,15 +15,13 @@ const frix = proxyquire('../lib/frix', {
 chai.use(require('chai-http'));
 
 describe('frix', function() {
-
   describe('express handler', function() {
-
     it('should create valid function and html', function(done) {
       let app = express();
       frix.render().then(requestHandler => {
         app.use(requestHandler);
         chai.request(app).get('/page1').end((err, res) => {
-          expect(err).to.be.null;
+          expect(err).to.equal(null);
           expect(res).to.have.status(200);
           done();
         });
@@ -33,23 +32,21 @@ describe('frix', function() {
       let app = express();
       frix.render().then(requestHandler => {
         app.use(requestHandler);
-        chai.request(app).get('/invalid').end((err, res) => {
+        chai.request(app).get('/invalid').end((_, res) => {
           expect(res).to.have.status(404);
           done();
         });
       });
     });
-
   });
 
   describe('options', function() {
-
     it('should be merged', function(done) {
       let app = express();
       frix.setOptions({key: 'opt-test.json'});
       frix.render().then(requestHandler => {
         app.use(requestHandler);
-        chai.request(app).get('/opt-test').end((err, res) => {
+        chai.request(app).get('/opt-test').end((_, res) => {
           expect(res).to.have.status(200);
           done();
         });
@@ -59,7 +56,6 @@ describe('frix', function() {
     after(function() {
       frix.setOptions({key: 'key.json'});
     });
-
   });
 
   describe('modules', function() {
@@ -68,15 +64,14 @@ describe('frix', function() {
     };
 
     afterEach(function() {
-      frix.modules['content'] = [];
+      frix.modules.content = [];
     });
 
     describe('should be added', function() {
-
       it('using attributes', function() {
         frix.addModule('content', someFunction);
-        expect(frix.modules['content'].includes(someFunction))
-          .to.be.true;
+        expect(frix.modules.content.includes(someFunction))
+          .to.equal(true);
       });
 
       it('using object', function() {
@@ -84,8 +79,8 @@ describe('frix', function() {
           target: 'content',
           module: someFunction
         });
-        expect(frix.modules['content'].includes(someFunction))
-          .to.be.true;
+        expect(frix.modules.content.includes(someFunction))
+          .to.equal(true);
       });
     });
 
@@ -101,7 +96,7 @@ describe('frix', function() {
 
     it('should all be called', function(done) {
       let promises = [];
-      for (let [key,] of keva(frix.modules)) {
+      for (let [key] of keva(frix.modules)) {
         promises.push(new Promise(resolve => {
           frix.addModule(key, html => {
             resolve(key);

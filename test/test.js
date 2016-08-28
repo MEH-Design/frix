@@ -4,6 +4,8 @@ const chai = require('chai');
 const expect = chai.expect;
 const proxyquire = require('proxyquire');
 const keva = require('keva');
+const express = require('express');
+const request = require('express-mock-request');
 const frix = proxyquire('../lib/frix', {
   'app-root-path': {
     path: 'test/files'
@@ -14,13 +16,18 @@ chai.use(require('chai-http'));
 
 describe('frix', function() {
 
-  before(frix.render);
+  describe('render', function() {
 
-  describe('html', function() {
-
-    it('should be rendered', function() {
-      expect(frix.templates)
-        .to.not.be.null;
+    it('should create valid function and html', function(done) {
+      let app = express();
+      frix.render().then(requestHandler => {
+        app.use(requestHandler);
+        chai.request(app).get('/page1').end((err, res) => {
+          expect(err).to.be.null;
+          expect(res).to.have.status(200);
+          done();
+        });
+      });
     });
 
   });

@@ -15,7 +15,7 @@ chai.use(require('chai-http'));
 
 describe('frix', function() {
 
-  describe('render', function() {
+  describe('express handler', function() {
 
     it('should create valid function and html', function(done) {
       let app = express();
@@ -27,6 +27,37 @@ describe('frix', function() {
           done();
         });
       });
+    });
+
+    it('should not return anything when url is invalid', function(done) {
+      let app = express();
+      frix.render().then(requestHandler => {
+        app.use(requestHandler);
+        chai.request(app).get('/invalid').end((err, res) => {
+          expect(res).to.have.status(404);
+          done();
+        });
+      });
+    });
+
+  });
+
+  describe('options', function() {
+
+    it('should be merged', function(done) {
+      let app = express();
+      frix.setOptions({key: 'opt-test.json'});
+      frix.render().then(requestHandler => {
+        app.use(requestHandler);
+        chai.request(app).get('/opt-test').end((err, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+      });
+    });
+
+    after(function() {
+      frix.setOptions({key: 'key.json'});
     });
 
   });

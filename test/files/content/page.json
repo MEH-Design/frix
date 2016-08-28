@@ -6,7 +6,8 @@
       "heading-en": "Tree",
       "heading-de": "Baum",
       "author": {
-        "author": "https://simple.wikipedia.org/wiki/Tree"
+        "author": "Wikipedia",
+        "href": "https://simple.wikipedia.org/wiki/Tree"
       }
     }
   }

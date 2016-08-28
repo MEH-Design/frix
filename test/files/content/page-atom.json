@@ -6,7 +6,8 @@
       "heading-en": "Atom",
       "heading-de": "Atom",
       "author": {
-        "author": "https://simple.wikipedia.org/wiki/Atom"
+        "name": "Wikipedia",
+        "href": "https://simple.wikipedia.org/wiki/Atom"
       }
     }
   }

@@ -5,7 +5,6 @@ const expect = chai.expect;
 const proxyquire = require('proxyquire');
 const keva = require('keva');
 const express = require('express');
-const request = require('express-mock-request');
 const frix = proxyquire('../lib/frix', {
   'app-root-path': {
     path: 'test/files'

@@ -71,10 +71,6 @@ Note that the class `Frix` takes an optional config as first argument which desc
 #### File System
 
 See the example files at `/test/files`.
-The produced output when getting '/page1' is:
-```html
-  <todo />
-```
 
 ## Installation
 

@@ -5,6 +5,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const proxyquire = require('proxyquire');
 const keva = require('keva');
+const diff = require('diff');
 const express = require('express');
 const frix = proxyquire('../lib/frix', {
   'app-root-path': {
@@ -12,17 +13,39 @@ const frix = proxyquire('../lib/frix', {
   }
 });
 
+
 chai.use(require('chai-http'));
 
 describe('frix', function() {
   describe('express handler', function() {
     it('should create valid function and html', function(done) {
+      let expectedHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Woody</title>
+        </head>
+        <body>
+          <article>
+            <header>
+              <h1>Tree</h1>
+              <h1>Baum</h1>
+              <p>written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
+            </header>
+            <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+          </article>
+        </body>
+      </html>
+      `
       let app = express();
       frix.render().then(requestHandler => {
         app.use(requestHandler);
         chai.request(app).get('/page1').end((err, res) => {
-          expect(err).to.equal(null);
-          expect(res).to.have.status(200);
+          let change = diff.diffWords(res.text, expectedHtml, {
+            ignoreWhitespace: true
+          });
+          expect(change).should.have.lenght(0);
           done();
         });
       });

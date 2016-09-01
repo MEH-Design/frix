@@ -2,10 +2,11 @@
 'use strict';
 
 const chai = require('chai');
+const should = chai.should();
 const expect = chai.expect;
 const proxyquire = require('proxyquire');
 const keva = require('keva');
-const diff = require('diff');
+const noWhitespace = require('no-whitespace');
 const express = require('express');
 const frix = proxyquire('../lib/frix', {
   'app-root-path': {
@@ -19,11 +20,11 @@ chai.use(require('chai-http'));
 describe('frix', function() {
   describe('express handler', function() {
     it('should create valid function and html', function(done) {
-      let expectedHtml = `
+      let expectedHtml = noWhitespace(`
       <!DOCTYPE html>
       <html>
         <head>
-          <meta charset="utf-8">
+          <meta charset="utf-8"/>
           <title>Woody</title>
         </head>
         <body>
@@ -37,15 +38,12 @@ describe('frix', function() {
           </article>
         </body>
       </html>
-      `
+      `);
       let app = express();
       frix.render().then(requestHandler => {
         app.use(requestHandler);
         chai.request(app).get('/page1').end((err, res) => {
-          let change = diff.diffWords(res.text, expectedHtml, {
-            ignoreWhitespace: true
-          });
-          expect(change).should.have.lenght(0);
+          expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();
         });
       });

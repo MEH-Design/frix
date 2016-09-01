@@ -36,12 +36,12 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "coveralls": "^2.11.9",
-    "diff": "^3.0.0",
     "eslint": "^3.2.2",
     "eslint-config-google": "^0.6.0",
     "express": "^4.13.4",
     "istanbul": "^0.4.3",
     "mocha": "^3.0.2",
+    "no-whitespace": "^1.0.0",
     "proxyquire": "^1.7.9"
   }
 }

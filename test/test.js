@@ -21,23 +21,23 @@ describe('frix', function() {
   describe('express handler', function() {
     it('should create valid function and html', function(done) {
       let expectedHtml = noWhitespace(`
-      <!DOCTYPE html>
-      <html>
-        <head>
-          <meta charset="utf-8"/>
-          <title>Woody</title>
-        </head>
-        <body>
-          <article>
-            <header>
-              <h1>Tree</h1>
-              <h1>Baum</h1>
-              <p>written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
-            </header>
-            <p>A tree is a tall plant with a trunk and branches made of wood.</p>
-          </article>
-        </body>
-      </html>
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8"/>
+            <title>Woody</title>
+          </head>
+          <body>
+            <article>
+              <header>
+                <h1>Tree</h1>
+                <h1>Baum</h1>
+                <p>written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
+              </header>
+              <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+            </article>
+          </body>
+        </html>
       `);
       let app = express();
       frix.render().then(requestHandler => {
@@ -69,6 +69,36 @@ describe('frix', function() {
         app.use(requestHandler);
         chai.request(app).get('/opt-test').end((_, res) => {
           expect(res).to.have.status(200);
+          done();
+        });
+      });
+    });
+
+    after(function() {
+      frix.setOptions({key: 'key.json'});
+    });
+  });
+
+  describe('loops', function() {
+    it('should be executed', function(done) {
+      let expectedHtml = noWhitespace(`
+        <article>
+          <header>
+            <h1>Tree</h1>
+            <h1>Baum</h1>
+            <p>written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
+          </header>
+          <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+        </article>
+        <br/>
+        <cite>Insert smart-ass quote here.</cite>
+      `);
+      let app = express();
+      frix.setOptions({key: 'loop-test.json'});
+      frix.render().then(requestHandler => {
+        app.use(requestHandler);
+        chai.request(app).get('/loop-test').end((_, res) => {
+          expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();
         });
       });

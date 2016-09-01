@@ -1,0 +1,16 @@
+{
+  "test": {
+    "article": {
+      "text": "A tree is a tall plant with a trunk and branches made of wood.",
+      "header": {
+        "heading-en": "Tree",
+        "heading-de": "Baum",
+        "author": {
+          "name": "Wikipedia",
+          "link": "https://simple.wikipedia.org/wiki/Tree"
+        }
+      }
+    }
+  },
+  "quote": "Insert smart-ass quote here."
+}

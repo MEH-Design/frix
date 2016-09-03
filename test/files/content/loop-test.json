@@ -1,7 +1,8 @@
 {
   "test": [
     {
-      "article": {
+      "type": "article",
+      "data": {
         "text": "A tree is a tall plant with a trunk and branches made of wood.",
         "header": {
           "heading-en": "Tree",
@@ -14,7 +15,8 @@
       }
     },
     {
-      "quote": "Insert smart-ass quote here."
+      "type": "quote",
+      "data": "Insert smart-ass quote here."
     }
   ]
 }

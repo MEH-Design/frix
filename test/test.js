@@ -1,4 +1,8 @@
 /* eslint max-nested-callbacks: 0*/
+/* eslint no-unused-vars: 0*/
+  // mocha's 'should' is not used
+/* eslint max-len: 0 */
+  // the html is partially longer than 80 characters
 'use strict';
 
 const chai = require('chai');
@@ -43,6 +47,7 @@ describe('frix', function() {
       frix.render().then(requestHandler => {
         app.use(requestHandler);
         chai.request(app).get('/page1').end((err, res) => {
+          if (err) throw err;
           expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();
         });

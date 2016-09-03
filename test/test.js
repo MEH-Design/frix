@@ -92,6 +92,7 @@ describe('frix', function() {
         </article>
         <br/>
         <cite>Insert smart-ass quote here.</cite>
+        <br/>
       `);
       let app = express();
       frix.setOptions({key: 'loop-test.json'});

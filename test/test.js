@@ -51,7 +51,7 @@ describe('frix', function() {
           expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();
         });
-      });
+      }, err => console.log(err));
     });
 
     it('should not return anything when url is invalid', function(done) {

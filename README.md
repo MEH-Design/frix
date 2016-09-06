@@ -7,7 +7,7 @@
 [![Code Climate](https://codeclimate.com/github/MEH-Design/frix/badges/gpa.svg)](https://codeclimate.com/github/MEH-Design/frix)
 [![License](http://img.shields.io/:license-mit-green.svg?style=flat)](http://opensource.org/licenses/MIT)
 
-<img align="right" height="85" src="http://imgh.us/frix.svg">
+<img align="right" height="85" src="http://imgh.us/frix-final.svg">
 
 A lightweight, modular CMS inspired by Brad Frost's [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design).
 

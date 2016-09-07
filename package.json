@@ -42,7 +42,6 @@
     "express": "^4.13.4",
     "istanbul": "^0.4.3",
     "mocha": "^3.0.2",
-    "no-whitespace": "^1.0.0",
-    "proxyquire": "^1.7.9"
+    "no-whitespace": "^1.0.0"
   }
 }

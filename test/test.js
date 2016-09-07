@@ -8,17 +8,14 @@
 const chai = require('chai');
 const should = chai.should();
 const expect = chai.expect;
-const proxyquire = require('proxyquire');
 const keva = require('keva');
 const noWhitespace = require('no-whitespace');
 const express = require('express');
-const frix = proxyquire('../lib/frix', {
-  'app-root-path': {
-    path: 'test/files'
-  }
+const frix = require('../lib/frix');
+
+frix.setOptions({
+  root: 'test/files/'
 });
-
-
 chai.use(require('chai-http'));
 
 describe('frix', function() {

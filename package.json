@@ -31,8 +31,7 @@
     "mkdirp-then": "^1.2.0",
     "object-merge": "^2.5.1",
     "proxyquire": "^1.7.10",
-    "then-fs": "^2.0.0",
-    "webpack": "^1.13.2"
+    "then-fs": "^2.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

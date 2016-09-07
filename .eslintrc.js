@@ -5,6 +5,8 @@ module.exports = {
       "mocha": true
     },
     "rules": {
+      "max-len": 0,
+      "no-loop-func": 0,
       "require-jsdoc": 0
     }
 };

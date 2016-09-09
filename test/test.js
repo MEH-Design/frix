@@ -12,10 +12,9 @@ const keva = require('keva');
 const noWhitespace = require('no-whitespace');
 const express = require('express');
 const frix = require('../lib/frix');
+let opt = require('../lib/frix.conf.js');
+opt.root = 'test/files/';
 
-frix.setOptions({
-  root: 'test/files/'
-});
 chai.use(require('chai-http'));
 
 describe('frix', function() {
@@ -63,24 +62,6 @@ describe('frix', function() {
     });
   });
 
-  describe('options', function() {
-    it('should be merged', function(done) {
-      let app = express();
-      frix.setOptions({key: 'opt-test.json'});
-      frix.render().then(requestHandler => {
-        app.use(requestHandler);
-        chai.request(app).get('/opt-test').end((_, res) => {
-          expect(res).to.have.status(200);
-          done();
-        });
-      });
-    });
-
-    after(function() {
-      frix.setOptions({key: 'key.json'});
-    });
-  });
-
   describe('loops', function() {
     it('should be executed', function(done) {
       let expectedHtml = noWhitespace(`
@@ -97,7 +78,7 @@ describe('frix', function() {
         <br/>
       `);
       let app = express();
-      frix.setOptions({key: 'loop-test.json'});
+      opt.key = 'loop-test.json';
       frix.render().then(requestHandler => {
         app.use(requestHandler);
         chai.request(app).get('/loop-test').end((_, res) => {
@@ -108,51 +89,51 @@ describe('frix', function() {
     });
 
     after(function() {
-      frix.setOptions({key: 'key.json'});
+      opt.key = 'key.json';
     });
   });
 
-  describe('modules', function() {
+  describe('modifiers', function() {
     let someFunction = function(html) {
       return html;
     };
 
     afterEach(function() {
-      frix.modules.content = [];
+      frix.modifiers.content = [];
     });
 
     describe('should be added', function() {
       it('using attributes', function() {
-        frix.addModule('content', someFunction);
-        expect(frix.modules.content.includes(someFunction))
+        frix.addModifier('content', someFunction);
+        expect(frix.modifiers.content.includes(someFunction))
           .to.equal(true);
       });
 
       it('using object', function() {
-        frix.addModule({
+        frix.addModifier({
           target: 'content',
-          module: someFunction
+          modifier: someFunction
         });
-        expect(frix.modules.content.includes(someFunction))
+        expect(frix.modifiers.content.includes(someFunction))
           .to.equal(true);
       });
     });
 
     it('should be rejected when not a function', function() {
-      expect(frix.addModule.bind(frix, 'content', null))
+      expect(frix.addModifier.bind(frix, 'content', null))
         .to.throw('Not a function.');
     });
 
     it('should be rejected when event does not exist', function() {
-      expect(frix.addModule.bind(frix, 'invalid-string', someFunction))
+      expect(frix.addModifier.bind(frix, 'invalid-string', someFunction))
         .to.throw('Event does not exist.');
     });
 
     it('should all be called', function(done) {
       let promises = [];
-      for (let [key] of keva(frix.modules)) {
+      for (let [key] of keva(frix.modifiers)) {
         promises.push(new Promise(resolve => {
-          frix.addModule(key, html => {
+          frix.addModifier(key, html => {
             resolve(key);
             return html;
           });

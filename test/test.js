@@ -28,11 +28,11 @@ describe('frix', function() {
             <title>Woody</title>
           </head>
           <body>
-            <article>
-              <header>
-                <h1>Tree</h1>
-                <h1>Baum</h1>
-                <p>written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
+            <article class="article">
+              <header class="header">
+                <h1 class="heading">Tree</h1>
+                <h1 class="heading">Baum</h1>
+                <p class="author">written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
               </header>
               <p>A tree is a tall plant with a trunk and branches made of wood.</p>
             </article>
@@ -65,16 +65,16 @@ describe('frix', function() {
   describe('loops', function() {
     it('should be executed', function(done) {
       let expectedHtml = noWhitespace(`
-        <article>
-          <header>
-            <h1>Tree</h1>
-            <h1>Baum</h1>
-            <p>written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
+        <article class="article">
+          <header class="header">
+            <h1 class="heading">Tree</h1>
+            <h1 class="heading">Baum</h1>
+            <p class="author">written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
           </header>
           <p>A tree is a tall plant with a trunk and branches made of wood.</p>
         </article>
         <br/>
-        <cite>Insert smart-ass quote here.</cite>
+        <cite class="quote">Insert smart-ass quote here.</cite>
         <br/>
       `);
       let app = express();

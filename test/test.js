@@ -42,7 +42,7 @@ describe('frix', function() {
       let app = express();
       frix.render().then(requestHandler => {
         app.use(requestHandler);
-        chai.request(app).get('/page1').end((err, res) => {
+        chai.request(app).get('/page2').end((err, res) => {
           if (err) throw err;
           expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();

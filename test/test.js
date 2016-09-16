@@ -5,6 +5,8 @@
   // the html is partially longer than 80 characters
 'use strict';
 
+const fs = require('then-fs');
+const css = require('css');
 const chai = require('chai');
 const should = chai.should();
 const expect = chai.expect;
@@ -143,6 +145,31 @@ describe('frix', function() {
         done();
       });
       frix.render();
+    });
+  });
+  describe('css', function() {
+    let mainCss;
+    let expectedCss = noWhitespace(`
+      .header > .author p {
+        font-size: 30px;
+      }
+      .author p {
+        font-size: 20px;
+      }
+    `);
+    before(function(done) {
+      frix.render().then(() => {
+        fs.readFile(`${opt.root}bin/main.css`, 'utf8').then(file => {
+          mainCss = file;
+          done();
+        });
+      });
+    });
+    it('should create a valid stylesheet', function() {
+      expect(css.parse(mainCss).type).to.equal('stylesheet');
+    });
+    it('should create the correct css', function() {
+      expect(noWhitespace(mainCss)).to.equal(expectedCss);
     });
   });
 });

@@ -18,8 +18,74 @@ let opt = require('../lib/frix.conf.js');
 opt.root = 'test/files/';
 
 chai.use(require('chai-http'));
+chai.use(require('chai-json-equal'));
 
 describe('frix', function() {
+  describe('api', function() {
+    it('should be able to request all pages', function(done) {
+      let expectedJson = {
+        '/page1': {
+          name: 'page',
+          filename: 'test/files/bin/page1.html'
+        },
+        '/page2': {
+          name: 'page',
+          filename: 'test/files/bin/page2.html'
+        }
+      };
+      frix.render().then(() => {
+        frix.api.getAllPages().should.jsonEqual(expectedJson);
+        done();
+      });
+    });
+
+    it('should be able to request content structure', function(done) {
+      let expectedJson = {
+        'title':{
+          'value':'Atomic',
+          'type':'text'
+        },
+        'article':{
+          'text':{
+            'value':'An atom is the basic unit that makes up all matter.',
+            'type':'richtext'
+          },
+          'header':{
+            'heading-en':{
+              'value':'Atom',
+              'type':'text'
+            },
+            'heading-de':{
+              'value':'Atom',
+              'type':'text'
+            },
+            'author':{
+              'name':{
+                'value':'Wikipedia',
+                'type':'text'
+              },
+              'link':{
+                'value':'https://simple.wikipedia.org/wiki/Atom',
+                'type':'url'
+              }
+            }
+          }
+        }
+      };
+      frix.render().then(() => {
+        frix.api.getContentStructure('/page1').should.jsonEqual(expectedJson);
+        done();
+      });
+    });
+
+    it('should be able to request opt', function(done) {
+      frix.render().then(() => {
+        frix.api.getOpt().should.jsonEqual(require('../lib/frix.conf.js'));
+        done();
+      });
+    });
+  });
+
   describe('express handler', function() {
     it('should create valid function and html', function(done) {
       let expectedHtml = noWhitespace(`

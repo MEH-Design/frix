@@ -1,6 +1,6 @@
 {
   "name": "frix",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A CMS based on atomic design principles.",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/MEH-Design/atomicms#readme",
   "dependencies": {
-    "app-root-path": "^1.0.0",
+    "app-root-path": "^2.0.1",
     "cheerio": "^0.22.0",
     "css": "^2.2.1",
     "decb": "^1.3.2",

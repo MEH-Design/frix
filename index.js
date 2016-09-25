@@ -1,1 +1,1 @@
-module.exports = require('./lib/atomicms');
+module.exports = require('./lib/frix');

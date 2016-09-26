@@ -15,7 +15,7 @@ const noWhitespace = require('no-whitespace');
 const express = require('express');
 const frix = require('../lib/frix');
 let opt = require('../lib/frix.conf.js');
-opt.root = 'test/files/';
+opt.root += 'test/files/';
 
 chai.use(require('chai-http'));
 chai.use(require('chai-json-equal'));
@@ -23,14 +23,15 @@ chai.use(require('chai-json-equal'));
 describe('frix', function() {
   describe('api', function() {
     it('should be able to request all pages', function(done) {
+      let root = frix.api.getOpt().root;
       let expectedJson = {
         '/page1': {
           name: 'page',
-          filename: 'test/files/bin/page1.html'
+          filename: root + 'bin/page1.html'
         },
         '/page2': {
           name: 'page',
-          filename: 'test/files/bin/page2.html'
+          filename: root + 'bin/page2.html'
         }
       };
       frix.render().then(() => {

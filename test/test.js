@@ -119,6 +119,41 @@ describe('frix', function() {
       }, err => console.log(err));
     });
 
+    it('should respect dev flag', function(done) {
+      let expectedHtml = noWhitespace(`
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset="utf-8"/>
+            <title>Woody</title>
+          </head>
+        <body>
+          <article class="article" dev="article">
+            <header class="header" dev="article header">
+              <h1 class="heading" dev="article header heading-en">Tree</h1>
+              <h1 class="heading" dev="article header heading-de">Baum</h1>
+              <p class="author" dev="article header author">
+                written by
+                <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a>
+              </p>
+            </header>
+            <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+          </article>
+        </body>
+      </html>
+      `);
+      let app = express();
+      frix.render({dev: true}).then(requestHandler => {
+        app.use(requestHandler);
+        chai.request(app).get('/page2').end((err, res) => {
+          if (err) throw err;
+          expect(noWhitespace(res.text)).to.equal(expectedHtml);
+          done();
+        });
+      }, err => console.log(err));
+    });
+
+
     it('should not return anything when url is invalid', function(done) {
       let app = express();
       frix.render().then(requestHandler => {

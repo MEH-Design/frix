@@ -134,7 +134,9 @@ describe('frix', function() {
               <h1 class="heading" data-dev="article header heading-de">Baum</h1>
               <p class="author" data-dev="article header author">
                 written by
-                <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a>
+                <a href="https://simple.wikipedia.org/wiki/Tree"
+                   data-dev-href="article header author link"
+                   data-dev="article header author name">Wikipedia</a>
               </p>
             </header>
             <p>A tree is a tall plant with a trunk and branches made of wood.</p>

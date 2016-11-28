@@ -139,7 +139,7 @@ describe('frix', function() {
                    data-dev="article header author name">Wikipedia</a>
               </p>
             </header>
-            <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+            <p data-dev="article text">A tree is a tall plant with a trunk and branches made of wood.</p>
           </article>
         </body>
       </html>

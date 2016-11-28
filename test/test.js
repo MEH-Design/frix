@@ -128,11 +128,11 @@ describe('frix', function() {
             <title>Woody</title>
           </head>
         <body>
-          <article class="article" dev="article">
-            <header class="header" dev="article header">
-              <h1 class="heading" dev="article header heading-en">Tree</h1>
-              <h1 class="heading" dev="article header heading-de">Baum</h1>
-              <p class="author" dev="article header author">
+          <article class="article" data-dev="article">
+            <header class="header" data-dev="article header">
+              <h1 class="heading" data-dev="article header heading-en">Tree</h1>
+              <h1 class="heading" data-dev="article header heading-de">Baum</h1>
+              <p class="author" data-dev="article header author">
                 written by
                 <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a>
               </p>

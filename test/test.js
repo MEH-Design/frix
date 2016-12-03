@@ -128,18 +128,18 @@ describe('frix', function() {
             <title>Woody</title>
           </head>
         <body>
-          <article class="article" data-dev="article">
-            <header class="header" data-dev="article header">
-              <h1 class="heading" data-dev="article header heading-en">Tree</h1>
-              <h1 class="heading" data-dev="article header heading-de">Baum</h1>
-              <p class="author" data-dev="article header author">
+          <article class="article">
+            <header class="header">
+              <h1 class="heading" data-dev-text-content="article header heading-en">Tree</h1>
+              <h1 class="heading" data-dev-text-content="article header heading-de">Baum</h1>
+              <p class="author">
                 written by
                 <a href="https://simple.wikipedia.org/wiki/Tree"
-                   data-dev-href="article header author link"
-                   data-dev="article header author name">Wikipedia</a>
+                   data-dev-url-href="article header author link"
+                   data-dev-text-content="article header author name">Wikipedia</a>
               </p>
             </header>
-            <p data-dev="article text">A tree is a tall plant with a trunk and branches made of wood.</p>
+            <p data-dev-richtext-content="article text">A tree is a tall plant with a trunk and branches made of wood.</p>
           </article>
         </body>
       </html>

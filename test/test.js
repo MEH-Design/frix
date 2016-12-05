@@ -1,3 +1,5 @@
+/* eslint no-console: 0*/
+  // in our opinion it is perfectly fine to use console logs for tests :)
 /* eslint max-nested-callbacks: 0*/
 /* eslint no-unused-vars: 0*/
   // mocha's 'should' is not used
@@ -27,12 +29,12 @@ describe('frix', function() {
       let expectedJson = {
         '/page1': {
           name: 'page',
-          filename: root + 'bin/page1.html'
+          filename: root + 'bin/page1.html',
         },
         '/page2': {
           name: 'page',
-          filename: root + 'bin/page2.html'
-        }
+          filename: root + 'bin/page2.html',
+        },
       };
       frix.render().then(() => {
         frix.api.getAllPages().should.jsonEqual(expectedJson);
@@ -42,36 +44,36 @@ describe('frix', function() {
 
     it('should be able to request content structure', function(done) {
       let expectedJson = {
-        'title':{
-          'value':'Atomic',
-          'type':'text'
+        'title': {
+          'value': 'Atomic',
+          'type': 'text',
         },
-        'article':{
-          'text':{
-            'value':'An atom is the basic unit that makes up all matter.',
-            'type':'richtext'
+        'article': {
+          'text': {
+            'value': 'An atom is the basic unit that makes up all matter.',
+            'type': 'richtext',
           },
-          'header':{
-            'heading-en':{
-              'value':'Atom',
-              'type':'text'
+          'header': {
+            'heading-en': {
+              'value': 'Atom',
+              'type': 'text',
             },
-            'heading-de':{
-              'value':'Atom',
-              'type':'text'
+            'heading-de': {
+              'value': 'Atom',
+              'type': 'text',
             },
-            'author':{
-              'name':{
-                'value':'Wikipedia',
-                'type':'text'
+            'author': {
+              'name': {
+                'value': 'Wikipedia',
+                'type': 'text',
               },
-              'link':{
-                'value':'https://simple.wikipedia.org/wiki/Atom',
-                'type':'url'
-              }
-            }
-          }
-        }
+              'link': {
+                'value': 'https://simple.wikipedia.org/wiki/Atom',
+                'type': 'url',
+              },
+            },
+          },
+        },
       };
       frix.render().then(() => {
         frix.api.getContentStructure('/page1').should.jsonEqual(expectedJson);
@@ -109,14 +111,14 @@ describe('frix', function() {
         </html>
       `);
       let app = express();
-      frix.render().then(requestHandler => {
+      frix.render().then((requestHandler) => {
         app.use(requestHandler);
         chai.request(app).get('/page2').end((err, res) => {
           if (err) throw err;
           expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();
         });
-      }, err => console.log(err));
+      }, (err) => console.log(err));
     });
 
     it('should respect dev flag', function(done) {
@@ -145,20 +147,20 @@ describe('frix', function() {
       </html>
       `);
       let app = express();
-      frix.render({dev: true}).then(requestHandler => {
+      frix.render({dev: true}).then((requestHandler) => {
         app.use(requestHandler);
         chai.request(app).get('/page2').end((err, res) => {
           if (err) throw err;
           expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();
         });
-      }, err => console.log(err));
+      }, (err) => console.log(err));
     });
 
 
     it('should not return anything when url is invalid', function(done) {
       let app = express();
-      frix.render().then(requestHandler => {
+      frix.render().then((requestHandler) => {
         app.use(requestHandler);
         chai.request(app).get('/invalid').end((_, res) => {
           expect(res).to.have.status(404);
@@ -185,7 +187,7 @@ describe('frix', function() {
       `);
       let app = express();
       opt.key = 'loop-test.json';
-      frix.render().then(requestHandler => {
+      frix.render().then((requestHandler) => {
         app.use(requestHandler);
         chai.request(app).get('/loop-test').end((_, res) => {
           expect(noWhitespace(res.text)).to.equal(expectedHtml);
@@ -218,7 +220,7 @@ describe('frix', function() {
       it('using object', function() {
         frix.addModifier({
           target: 'content',
-          modifier: someFunction
+          modifier: someFunction,
         });
         expect(frix.modifiers.content.includes(someFunction))
           .to.equal(true);
@@ -238,8 +240,8 @@ describe('frix', function() {
     it('should all be called', function(done) {
       let promises = [];
       for (let [key] of keva(frix.modifiers)) {
-        promises.push(new Promise(resolve => {
-          frix.addModifier(key, html => {
+        promises.push(new Promise((resolve) => {
+          frix.addModifier(key, (html) => {
             resolve(key);
             return html;
           });
@@ -263,7 +265,7 @@ describe('frix', function() {
     `);
     before(function(done) {
       frix.render().then(() => {
-        fs.readFile(`${opt.root}bin/main.css`, 'utf8').then(file => {
+        fs.readFile(`${opt.root}bin/main.css`, 'utf8').then((file) => {
           mainCss = file;
           done();
         });

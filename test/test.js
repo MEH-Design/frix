@@ -87,6 +87,35 @@ describe('frix', function() {
         done();
       });
     });
+
+    it('should be able to watch for content changes', function(done) {
+      frix.api.watchReRender((data) => {
+        let expectedHtml = noWhitespace(`
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8"/>
+              <title>Woody</title>
+            </head>
+            <body>
+              <article class="article">
+                <header class="header">
+                  <h1 class="heading">Tree</h1>
+                  <h1 class="heading">Baum</h1>
+                  <p class="author">written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
+                </header>
+                <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+              </article>
+            </body>
+          </html>
+        `);
+        expect(noWhitespace(data.render.template)).to.equal(expectedHtml);
+        done();
+      });
+      let fileToRewrite = `${opt.root}${opt.content}/page.json`;
+      fs.readFile(fileToRewrite, 'utf8')
+        .then((file) => fs.writeFile(fileToRewrite, file));
+    });
   });
 
   describe('express handler', function() {

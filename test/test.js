@@ -161,16 +161,16 @@ describe('frix', function() {
         <body>
           <article class="article">
             <header class="header">
-              <h1 class="heading" data-dev-text-content="article header heading-en">Tree</h1>
-              <h1 class="heading" data-dev-text-content="article header heading-de">Baum</h1>
+              <h1 class="heading" data-dev="article header heading-en" data-dev-targets="text-content">Tree</h1>
+              <h1 class="heading" data-dev="article header heading-de" data-dev-targets="text-content">Baum</h1>
               <p class="author">
                 written by
                 <a href="https://simple.wikipedia.org/wiki/Tree"
-                   data-dev-url-href="article header author link"
-                   data-dev-text-content="article header author name">Wikipedia</a>
+                   data-dev="article header author"
+                   data-dev-targets="url-href:link text-content:name">Wikipedia</a>
               </p>
             </header>
-            <p data-dev-richtext-content="article text">A tree is a tall plant with a trunk and branches made of wood.</p>
+            <p data-dev="article" data-dev-targets="richtext-content:text">A tree is a tall plant with a trunk and branches made of wood.</p>
           </article>
         </body>
       </html>

@@ -49,6 +49,10 @@ describe('frix', function() {
           'type': 'text',
         },
         'article': {
+          'attribute': {
+            'type': 'text',
+            'value': 'something',
+          },
           'text': {
             'value': 'An atom is the basic unit that makes up all matter.',
             'type': 'richtext',
@@ -104,7 +108,7 @@ describe('frix', function() {
                   <h1 class="heading">Baum</h1>
                   <p class="author">written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
                 </header>
-                <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+                <p data-someattribute="something">A tree is a tall plant with a trunk and branches made of wood.</p>
               </article>
             </body>
           </html>
@@ -134,7 +138,7 @@ describe('frix', function() {
                 <h1 class="heading">Baum</h1>
                 <p class="author">written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
               </header>
-              <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+              <p data-someattribute="something">A tree is a tall plant with a trunk and branches made of wood.</p>
             </article>
           </body>
         </html>
@@ -170,7 +174,7 @@ describe('frix', function() {
                    data-dev-targets="url-href:link text-content:name">Wikipedia</a>
               </p>
             </header>
-            <p data-dev="article" data-dev-targets="richtext-content:text">A tree is a tall plant with a trunk and branches made of wood.</p>
+            <p data-someattribute="something" data-dev="article" data-dev-targets="text-data-someattribute:attribute richtext-content:text">A tree is a tall plant with a trunk and branches made of wood.</p>
           </article>
         </body>
       </html>
@@ -208,7 +212,7 @@ describe('frix', function() {
             <h1 class="heading">Baum</h1>
             <p class="author">written by <a href="https://simple.wikipedia.org/wiki/Tree">Wikipedia</a></p>
           </header>
-          <p>A tree is a tall plant with a trunk and branches made of wood.</p>
+          <p data-someattribute="something">A tree is a tall plant with a trunk and branches made of wood.</p>
         </article>
         <br/>
         <cite class="quote">Insert smart-ass quote here.</cite>

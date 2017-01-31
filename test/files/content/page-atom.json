@@ -1,6 +1,7 @@
 {
   "title" : "Atomic",
   "article" : {
+    "attribute": "something",
     "text": "An atom is the basic unit that makes up all matter.",
     "header": {
       "heading-en": "Atom",

@@ -3,6 +3,7 @@
     {
       "type": "article",
       "data": {
+        "attribute": "something",
         "text": "A tree is a tall plant with a trunk and branches made of wood.",
         "header": {
           "heading-en": "Tree",

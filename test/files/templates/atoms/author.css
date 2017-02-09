@@ -1,3 +1,9 @@
 atom p {
   font-size: 20px;
 }
+
+@media (min-width: 800px) {
+  atom p {
+    font-size: 15px;
+  }
+}

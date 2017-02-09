@@ -295,6 +295,12 @@ describe('frix', function() {
       .author p {
         font-size: 20px;
       }
+      @media (min-width: 800px) {
+        .author p {
+          font-size: 15px;
+        }
+      }
+
     `);
     before(function(done) {
       frix.render().then(() => {

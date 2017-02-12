@@ -21,6 +21,7 @@ opt.root += 'test/files/';
 
 chai.use(require('chai-http'));
 chai.use(require('chai-json-equal'));
+chai.use(require('chai-as-promised'));
 
 describe('frix', function() {
   describe('api', function() {
@@ -123,6 +124,12 @@ describe('frix', function() {
   });
 
   describe('express handler', function() {
+    it('should throw an error if there are multiple top-level tags in an element', function() {
+      opt.key = 'error-test.json';
+      let render = frix.render();
+      opt.key = 'key.json';
+      return expect(render).to.eventually.be.rejectedWith('Elements must be wrapped in an enclosing tag');
+    });
     it('should create valid function and html', function(done) {
       let expectedHtml = noWhitespace(`
         <!DOCTYPE html>

@@ -1,3 +1,6 @@
 {
-  "/opt-test": "opt-test"
+  "/opt-test": {
+    "template": "opt-test.html",
+    "content": "no-content.json"
+  }
 }

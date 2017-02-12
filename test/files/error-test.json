@@ -1,0 +1,6 @@
+{
+  "/error-test": {
+    "template": "error-test.html",
+    "content": "no-content.json"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "prefix-test": {
+    "template": "error-test.html",
+    "content": "prefix-test.json"
+  }
+}

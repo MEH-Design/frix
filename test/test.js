@@ -124,12 +124,6 @@ describe('frix', function() {
   });
 
   describe('express handler', function() {
-    it('should throw an error if there are multiple top-level tags in an element', function() {
-      opt.key = 'error-test.json';
-      let render = frix.render();
-      opt.key = 'key.json';
-      return expect(render).to.eventually.be.rejectedWith('Elements must be wrapped in an enclosing tag');
-    });
     it('should create valid function and html', function(done) {
       let expectedHtml = noWhitespace(`
         <!DOCTYPE html>
@@ -159,6 +153,20 @@ describe('frix', function() {
           done();
         });
       }, (err) => console.log(err));
+    });
+
+    it('should throw an error if there are multiple top-level tags in an element', function() {
+      opt.key = 'error-test.json';
+      let render = frix.render();
+      opt.key = 'key.json';
+      return expect(render).to.eventually.be.rejectedWith('Elements must be wrapped in an enclosing tag');
+    });
+
+    it('should throw an error if content does not match the prefix', function() {
+      opt.key = 'prefix-test.json';
+      let render = frix.render();
+      opt.key = 'key.json';
+      return expect(render).to.eventually.be.rejectedWith('"not an URL" did not match the prefix "url"');
     });
 
     it('should respect dev flag', function(done) {

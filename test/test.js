@@ -38,7 +38,6 @@ describe('frix', function() {
         },
       };
       frix.render().then(() => {
-        console.log(frix.api.getAllPages())
         frix.api.getAllPages().should.jsonEqual(expectedJson);
         done();
       });
@@ -96,7 +95,6 @@ describe('frix', function() {
 
     it('should be able to watch for content changes', function(done) {
       frix.api.watchReRender((data) => {
-        console.log('hello');
         let expectedHtml = noWhitespace(`
           <!DOCTYPE html>
           <html>

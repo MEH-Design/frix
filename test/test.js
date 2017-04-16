@@ -249,58 +249,6 @@ describe('frix', function() {
     });
   });
 
-  describe('modifiers', function() {
-    let someFunction = function(html) {
-      return html;
-    };
-
-    afterEach(function() {
-      frix.modifiers.content = [];
-    });
-
-    describe('should be added', function() {
-      it('using attributes', function() {
-        frix.addModifier('content', someFunction);
-        expect(frix.modifiers.content.includes(someFunction))
-          .to.equal(true);
-      });
-
-      it('using object', function() {
-        frix.addModifier({
-          target: 'content',
-          modifier: someFunction,
-        });
-        expect(frix.modifiers.content.includes(someFunction))
-          .to.equal(true);
-      });
-    });
-
-    it('should be rejected when not a function', function() {
-      expect(frix.addModifier.bind(frix, 'content', null))
-        .to.throw('Not a function.');
-    });
-
-    it('should be rejected when event does not exist', function() {
-      expect(frix.addModifier.bind(frix, 'invalid-string', someFunction))
-        .to.throw('Event does not exist.');
-    });
-
-    it('should all be called', function(done) {
-      let promises = [];
-      for (let [key] of keva(frix.modifiers)) {
-        promises.push(new Promise((resolve) => {
-          frix.addModifier(key, (html) => {
-            resolve(key);
-            return html;
-          });
-        }));
-      }
-      Promise.all(promises).then(() => {
-        done();
-      });
-      frix.render();
-    });
-  });
   describe('css', function() {
     let mainCss;
     let expectedCss = noWhitespace(`

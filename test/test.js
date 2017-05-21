@@ -30,11 +30,11 @@ describe('frix', function() {
       let expectedJson = {
         '/page1': {
           name: 'page',
-          filename: root + 'bin/page1.html',
+          filename: root + 'bin/page-atom.html',
         },
         '/page2': {
           name: 'page',
-          filename: root + 'bin/page2.html',
+          filename: root + 'bin/page.html',
         },
       };
       frix.render().then(() => {
@@ -202,7 +202,7 @@ describe('frix', function() {
           expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();
         });
-      }, (err) => console.log(err));
+      });
     });
 
 
@@ -212,6 +212,50 @@ describe('frix', function() {
         app.use(requestHandler);
         chai.request(app).get('/invalid').end((_, res) => {
           expect(res).to.have.status(404);
+          done();
+        });
+      });
+    });
+
+    it('should return correct resource when requested', function(done) {
+      let app = express();
+      frix.render().then((requestHandler) => {
+        app.use(requestHandler);
+        chai.request(app).get('/bin/resources/test.txt').end((_, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+      });
+    });
+
+    it('should not return anything when resource url is invalid', function(done) {
+      let app = express();
+      frix.render().then((requestHandler) => {
+        app.use(requestHandler);
+        chai.request(app).get('/bin/resources/invalid.txt').end((_, res) => {
+          expect(res).to.have.status(404);
+          done();
+        });
+      });
+    });
+
+    it('should return css file when requested', function(done) {
+      let app = express();
+      frix.render().then((requestHandler) => {
+        app.use(requestHandler);
+        chai.request(app).get('/bin/main.css').end((_, res) => {
+          expect(res).to.have.status(200);
+          done();
+        });
+      });
+    });
+
+    it('should redirect in case of /bin/*.html hardlink', function(done) {
+      let app = express();
+      frix.render().then((requestHandler) => {
+        app.use(requestHandler);
+        chai.request(app).get('/bin/page.html').end((_, res) => {
+          expect(res).to.redirect;
           done();
         });
       });
@@ -249,58 +293,6 @@ describe('frix', function() {
     });
   });
 
-  describe('modifiers', function() {
-    let someFunction = function(html) {
-      return html;
-    };
-
-    afterEach(function() {
-      frix.modifiers.content = [];
-    });
-
-    describe('should be added', function() {
-      it('using attributes', function() {
-        frix.addModifier('content', someFunction);
-        expect(frix.modifiers.content.includes(someFunction))
-          .to.equal(true);
-      });
-
-      it('using object', function() {
-        frix.addModifier({
-          target: 'content',
-          modifier: someFunction,
-        });
-        expect(frix.modifiers.content.includes(someFunction))
-          .to.equal(true);
-      });
-    });
-
-    it('should be rejected when not a function', function() {
-      expect(frix.addModifier.bind(frix, 'content', null))
-        .to.throw('Not a function.');
-    });
-
-    it('should be rejected when event does not exist', function() {
-      expect(frix.addModifier.bind(frix, 'invalid-string', someFunction))
-        .to.throw('Event does not exist.');
-    });
-
-    it('should all be called', function(done) {
-      let promises = [];
-      for (let [key] of keva(frix.modifiers)) {
-        promises.push(new Promise((resolve) => {
-          frix.addModifier(key, (html) => {
-            resolve(key);
-            return html;
-          });
-        }));
-      }
-      Promise.all(promises).then(() => {
-        done();
-      });
-      frix.render();
-    });
-  });
   describe('css', function() {
     let mainCss;
     let expectedCss = noWhitespace(`

@@ -36,6 +36,7 @@
     "object-merge": "^2.5.1",
     "proxyquire": "^1.7.10",
     "then-fs": "^2.0.0",
+    "upath": "^1.0.0",
     "watchdirectory": "^0.1.5"
   },
   "devDependencies": {

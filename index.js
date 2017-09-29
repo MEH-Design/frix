@@ -1,1 +1,1 @@
-module.exports = require('./lib/frix');
+module.exports = require('./src/frix');

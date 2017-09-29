@@ -26,7 +26,6 @@
   "dependencies": {
     "app-root-path": "^2.0.1",
     "body-parser": "^1.16.1",
-    "chai-as-promised": "^6.0.0",
     "cheerio": "^0.22.0",
     "cookie-parser": "^1.4.3",
     "css": "^2.2.1",
@@ -40,12 +39,13 @@
     "watchdirectory": "^0.1.5"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
     "chai-http": "^3.0.0",
     "chai-json-equal": "0.0.1",
     "coveralls": "^2.11.9",
-    "eslint": "^3.2.2",
-    "eslint-config-google": "^0.7.1",
+    "eslint": "^4.7.2",
+    "eslint-config-google": "^0.9.1",
     "express": "^4.13.4",
     "istanbul": "^0.4.3",
     "mocha": "^3.0.2",

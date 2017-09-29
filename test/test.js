@@ -15,8 +15,8 @@ const expect = chai.expect;
 const keva = require('keva');
 const noWhitespace = require('no-whitespace');
 const express = require('express');
-const frix = require('../lib/frix');
-let opt = require('../lib/frix.conf.js');
+const frix = require('../src/frix');
+let opt = require('../src/frix.conf.js');
 opt.root += 'test/files/';
 
 chai.use(require('chai-http'));
@@ -88,7 +88,7 @@ describe('frix', function() {
 
     it('should be able to request opt', function(done) {
       frix.render().then(() => {
-        frix.api.getOpt().should.jsonEqual(require('../lib/frix.conf.js'));
+        frix.api.getOpt().should.jsonEqual(opt);
         done();
       });
     });

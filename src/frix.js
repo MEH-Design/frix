@@ -18,15 +18,19 @@ module.exports = {
         this.api.keys = keys;
       });
       return (req, res, next) => {
-        if(req.url.startsWith('/bin/resources/')) {
-          res.sendFile(`${opt.root}resources/${req.url.slice('/bin/resources/'.length)}`);
+        if (req.url.startsWith('/bin/resources/')) {
+          res.sendFile(`${opt.root}resources/${req.url.slice('/bin/resources/'.length)}`, {}, (err) => {
+            if (err) {
+              res.status(err.status).end();
+            }
+          });
           return;
-        } else if(req.url === `/bin/${opt.style}`) {
+        } else if (req.url === `/bin/${opt.style}`) {
           res.sendFile(opt.root + req.url);
           return;
-        } else if(req.url.startsWith('/bin/')) {
+        } else if (req.url.startsWith('/bin/')) {
           for (let [key, val] of keva(this.api.templates)) {
-            if(val.filename.includes(req.url)) {
+            if (val.filename.includes(req.url)) {
               res.redirect(key);
             }
           }

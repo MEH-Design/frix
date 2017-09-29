@@ -24,8 +24,8 @@ function watchReRender(listener) {
     const name = upath.normalize(filename);
     if (change === 'modified') {
       access.readKey().then((keyJson) => {
-        for(let [key, value] of keva(keyJson)) {
-          if(name.endsWith(upath.normalize(value.template)) || name.endsWith(upath.normalize(value.content))) {
+        for (let [key, value] of keva(keyJson)) {
+          if (name.endsWith(upath.normalize(value.template)) || name.endsWith(upath.normalize(value.content))) {
             reRenderFile(keyJson, key)
               .then((info) => listener(info));
           }

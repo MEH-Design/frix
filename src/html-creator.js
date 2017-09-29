@@ -27,7 +27,7 @@ module.exports = class HTMLCreator {
         type: pageLocation.name,
       };
       return this.resolveElements(element).then((html) => {
-        if(access.readOptions().dev) {
+        if (access.readOptions().dev) {
           // replaces dev with data-dev (cheerio seems to bug with data attributes)
           // see http://regexr.com/3eoqv
           html = html.replace(/dev/g, 'data-dev');
@@ -45,9 +45,9 @@ module.exports = class HTMLCreator {
     let $ = cheerio.load(element.template, {
       xmlMode: true,
     });
-    if(parentKey && nextKey) {
+    if (parentKey && nextKey) {
       parentKey = `${parentKey} ${nextKey}`;
-    } else if(nextKey) {
+    } else if (nextKey) {
       parentKey = nextKey;
     }
     let rootChildren = $.root().children();
@@ -91,7 +91,7 @@ module.exports = class HTMLCreator {
       let nextKey;
 
       if (loopParent) {
-        if(access.readOptions().dev) {
+        if (access.readOptions().dev) {
           nextKey = $(elem).attr('loop-count');
         }
         let loop = element.content[$(loopParent).attr(`${opt.attributes.name}`)];
@@ -110,7 +110,7 @@ module.exports = class HTMLCreator {
       }
 
       for (let [name, value] of keva(elem.attribs)) {
-        let match = name.match(new RegExp(`^cms-(\w+)`));
+        let match = name.match(/^cms-(\w+)/);
         if (match) currentContent[match[1]] = value;
       }
 
@@ -141,7 +141,7 @@ module.exports = class HTMLCreator {
           let toInsert;
           if (data.single) {
             toInsert = data.value;
-          } else if(data[value]) {
+          } else if (data[value]) {
             if (typeof data[value] === 'string') {
               toInsert = data[value];
             } else {
@@ -170,8 +170,8 @@ module.exports = class HTMLCreator {
           } else {
             $(elem).attr(match[2], toInsert);
           }
-          if(options.key) {
-            if(!$(elem).attr(`dev`)) {
+          if (options.key) {
+            if (!$(elem).attr(`dev`)) {
               $(elem).attr(`dev`, options.key);
             }
             $(elem).attr('dev-targets',

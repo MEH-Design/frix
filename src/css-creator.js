@@ -10,14 +10,14 @@ function replaceElementTags(file) {
 
 function replaceSelectors(json, file) {
   Object.keys(json).forEach((key) => {
-    if(key === 'selectors') {
+    if (key === 'selectors') {
       json[key] = json[key].map((selector) => {
         selector = selector.replace(new RegExp(`\\b[^\\.#]${file.level}\\b`), ` .${file.name}`);
         selector = selector.replace(new RegExp(`^${file.level}\\b`), `.${file.name}`);
         return selector;
       });
     }
-    if(typeof json[key] === 'object') {
+    if (typeof json[key] === 'object') {
       replaceSelectors(json[key], file);
     }
   });

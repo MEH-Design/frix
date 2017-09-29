@@ -1,5 +1,3 @@
-/* eslint no-console: 0*/
-  // in our opinion it is perfectly fine to use console logs for tests :)
 /* eslint max-nested-callbacks: 0*/
 /* eslint no-unused-vars: 0*/
   // mocha's 'should' is not used
@@ -16,6 +14,7 @@ const keva = require('keva');
 const noWhitespace = require('no-whitespace');
 const express = require('express');
 const frix = require('../src/frix');
+
 let opt = require('../src/frix.conf.js');
 opt.root += 'test/files/';
 
@@ -152,7 +151,9 @@ describe('frix', function() {
           expect(noWhitespace(res.text)).to.equal(expectedHtml);
           done();
         });
-      }, (err) => console.log(err));
+      }, (err) => {
+        throw err;
+      });
     });
 
     it('should throw an error if there are multiple top-level tags in an element', function() {

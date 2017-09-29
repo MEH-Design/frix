@@ -28,14 +28,14 @@ module.exports = {
       const globals = content['&globals'];
 
       const globalPromises = [];
-      if(globals) {
-        for(let [global, scope] of keva(globals)) {
+      if (globals) {
+        for (let [global, scope] of keva(globals)) {
           const promise = this.readGlobalJson(global).then((data) => {
             let scopedContent = content;
             for (let key of scope) {
               scopedContent = scopedContent[key];
             }
-            for(let [key, value] of keva(data)) {
+            for (let [key, value] of keva(data)) {
               scopedContent[key] = value;
             }
           });

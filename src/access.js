@@ -23,31 +23,10 @@ module.exports = {
     return Promise.all([
       fs.readFile(templatePath),
       fs.readFile(contentPath),
-    ]).then((data) => {
-      const content = JSON.parse(data[1]);
-      const globals = content['&globals'];
-
-      const globalPromises = [];
-      if (globals) {
-        for (let [global, scope] of keva(globals)) {
-          const promise = this.readGlobalJson(global).then((data) => {
-            let scopedContent = content;
-            for (let key of scope) {
-              scopedContent = scopedContent[key];
-            }
-            for (let [key, value] of keva(data)) {
-              scopedContent[key] = value;
-            }
-          });
-          globalPromises.push(promise);
-        }
-      }
-
-      return Promise.all(globalPromises).then(() => ({
+    ]).then((data) => ({
         template: data[0],
-        content,
-      }));
-    });
+        content: JSON.parse(data[1]),
+    }));
   },
   readGlobalJson: function(path) {
     let JsonPath = `${opt.root}${opt.content}/${path}.global.json`;

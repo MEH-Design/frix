@@ -1,5 +1,8 @@
 module.exports = {
-    "extends": ["eslint:recommended", "google"],
+    "plugins": [
+      "promise"
+    ],
+    "extends": ["eslint:recommended", "google", "plugin:promise/recommended"],
     "env": {
       "es6": true,
       "mocha": true,

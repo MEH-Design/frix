@@ -38,7 +38,14 @@ module.exports = {
     });
   },
   readElement: function(level, filename) {
-    return fs.readFile(`${opt.root}${opt.structure.folders[level]}/${filename}`, 'utf8');
+    return fs.readFile(`${opt.root}${opt.structure.folders[level]}/${filename}`, 'utf8')
+    .then((content) => ({
+        // see http://stackoverflow.com/questions/9001557/match-filename-and-file-extension-from-single-regex
+        name: filename.match(/^([^\\]*)\.(\w+)$/)[1],
+        content,
+        level,
+      })
+    );
   },
   readKey: function() {
     return fs.readFile(`${opt.root}${opt.key}`, 'utf8')

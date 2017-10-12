@@ -115,10 +115,10 @@ module.exports = class HTMLCreator {
       }
 
       promises.push(
-        access.readElement(level, `${type}.html`).then((template) => {
+        access.readElement(level, `${type}.html`).then((element) => {
           return this.resolveElements({
             type: type,
-            template: template,
+            template: element.content,
             content: currentContent,
           }, depth + 1, nextKey, parentKey);
         }).then((html) => ({node: elem, html: html})));

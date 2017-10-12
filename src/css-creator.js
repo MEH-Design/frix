@@ -32,15 +32,7 @@ module.exports = class CSSCreator {
       directoryContent.push(
         access.readFilesAtLevel(level, (filename) => /\.css$/.test(filename))
         .then((files) => {
-          files = files
-            .map((filename) => access.readElement(level, filename).then((content) => {
-              return {
-                // see http://stackoverflow.com/questions/9001557/match-filename-and-file-extension-from-single-regex
-                name: filename.match(/^([^\\]*)\.(\w+)$/)[1],
-                content: content,
-                level: level,
-              };
-            }));
+          files = files.map((filename) => access.readElement(level, filename));
           return Promise.all(files);
         })
       );
